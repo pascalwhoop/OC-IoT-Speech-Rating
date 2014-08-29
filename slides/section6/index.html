@@ -54,19 +54,26 @@
 </section>
 
 <section>
-    <!--Diese Slide soll immer je section eingefügt werden und dann jeweils ein Rahmen um die aktuelle Position gezogen werden (divs unten)s-->
-    <div>
-        <img src="../common/img/oc_iot_architecture.png" alt="" class="stretch"/>
+    <section>
+        <!--Diese Slide soll immer je section eingefügt werden und dann jeweils ein Rahmen um die aktuelle Position gezogen werden (divs unten)s-->
+        <img src="../common/img/iot_architecture.png" alt="" class="stretch"/>
 
         <div style="
         position: absolute;
-        width: 80px;
-        height: 60px;
-        border: 10px solid red;
-        top: 45%;
-        left: 35%;"></div>
+        width: 255px;
+        height: 190px;
+        border: 7px solid red;
+        top: 22.5%;
+        left: 55.5%;" class="fragment"></div>
 
-        <div style="
+    </section>
+
+    <section>
+        <!--Diese Slide soll immer je section eingefügt werden und dann jeweils ein Rahmen um die aktuelle Position gezogen werden (divs unten)s-->
+        <div>
+            <img src="../common/img/oc_iot_architecture.png" alt="" class="stretch"/>
+
+            <div style="
         position: absolute;
         width: 80px;
         height: 60px;
@@ -74,21 +81,30 @@
         top: 78%;
         left: 35%;"></div>
 
-        <div style="
+            <div style="
         position: absolute;
         width: 200px;
         height:140px;
         border: 10px solid red;
         top: 32%;
         left: 22%;"></div>
-    </div>
 
-    <aside class="notes">
-        <p>Kommunikation im IoT: Was ist interessant? Kommunikation der Backendsysteme untereinander ist kein
-            neues Problem &#8594; nothing new</p>
+            <div style="
+        position: absolute;
+        width: 73px;
+        height:700px;
+        border: 10px solid red;
+        top: 22%;
+        left: 39%;"></div>
+        </div>
 
-        <p>Action liegt im "vorderen" Bereich also Ding-Ding Ding-Server Comm</p>
-    </aside>
+        <aside class="notes">
+            <p>Kommunikation im IoT: Was ist interessant? Kommunikation der Backendsysteme untereinander ist kein
+                neues Problem &#8594; nothing new</p>
+
+            <p>Action liegt im "vorderen" Bereich also Ding-Ding Ding-Server Comm</p>
+        </aside>
+    </section>
 </section>
 
 <section>
@@ -343,7 +359,7 @@ what transmission technique is used to send data over the cable. )  433Mhz Proto
 
     <section>
         <h4>6LoWPAN</h4>
-        
+
         <div class="left">
             <img src="images/6LoWPAN_stack.jpeg" alt=""/>
         </div>
@@ -460,7 +476,8 @@ Spring Pi &#8596; Funksteckdosen:   proprietäres Protokoll (433Mhz, primitiv)
 
             Note:
 
-            ZigBee und W-Lan Antenne dürfen nicht zu nah beieinander sein, da die Antennen sich sonst stören. Daher Brücke nur LAN-Zigbee
+            ZigBee und W-Lan Antenne dürfen nicht zu nah beieinander sein, da die Antennen sich sonst stören. Daher
+            Brücke nur LAN-Zigbee
         </script>
     </section>
 
@@ -479,27 +496,27 @@ Spring Pi &#8596; Funksteckdosen:   proprietäres Protokoll (433Mhz, primitiv)
         <script type="text/template">
             Controller definition and mapping
 
-```java
-@Controller       //Defines class as a Spring MVC Controller
-@RequestMapping("/service/groups")
-public class DeviceGroupController {
-//...
-```
+            ```java
+            @Controller //Defines class as a Spring MVC Controller
+            @RequestMapping("/service/groups")
+            public class DeviceGroupController {
+            //...
+            ```
         </script>
     </section>
 
     <section data-markdown>
         <script type="text/template">
-Method mapping to REST URI
+            Method mapping to REST URI
 
-```java
-@ResponseBody
-@RequestMapping(value = "/label/{label}", method = RequestMethod.GET)
-public DeviceGroupJSONMessage findByLabel(@PathVariable("label") String label) {
-    return deviceGroupService.getDeviceGroupForJSONByLabel(label);
-}
-//...
-```
+            ```java
+            @ResponseBody
+            @RequestMapping(value = "/label/{label}", method = RequestMethod.GET)
+            public DeviceGroupJSONMessage findByLabel(@PathVariable("label") String label) {
+            return deviceGroupService.getDeviceGroupForJSONByLabel(label);
+            }
+            //...
+            ```
         </script>
     </section>
 
@@ -507,15 +524,15 @@ public DeviceGroupJSONMessage findByLabel(@PathVariable("label") String label) {
     <section data-markdown>
         <script type="text/template">
             RequestBody JSON to Java Object
-```java
-@ResponseBody
-@RequestMapping(method = RequestMethod.PUT)
-public Integer update(@RequestBody DeviceGroup devicegroup) throws Exception {
-deviceGroupService.update(devicegroup);
-    return devicegroup.getId();
-}
-//...
-```
+            ```java
+            @ResponseBody
+            @RequestMapping(method = RequestMethod.PUT)
+            public Integer update(@RequestBody DeviceGroup devicegroup) throws Exception {
+            deviceGroupService.update(devicegroup);
+            return devicegroup.getId();
+            }
+            //...
+            ```
         </script>
     </section>
 

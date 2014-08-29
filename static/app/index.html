@@ -29,9 +29,9 @@
             <div class="container">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a ng-class="{ active: isActive('/')}"          ng-href="#/">Home</a></li>
+                    <li ng-class="{disabled: {{!participant.name}}}"><a ng-class="{ active: isActive('/rating')}" ng-href="#/rating">Rating</a></li>
                     <li><a ng-class="{ active: isActive('/slides')}"    ng-href="#/slides">Slides</a></li>
                     <li><a ng-class="{ active: isActive('/tasks')}"     ng-href="#/tasks">Tasks</a></li>
-                    <li ng-class="{disabled: {{!participant.name}}}"><a ng-class="{ active: isActive('/rating')}" ng-href="#/rating">Rating</a></li>
                     <li><a ng-class="{ active: isActive('/hints')}"     ng-href="#/hints">Hints</a></li>
                 </ul>
                 <a class="navbar-brand" ng-href="#/">OC IoT Workshop</a>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="col-md-4">
                     <!--for debug only TODO remove-->
-                    <button onclick="localStorage.clear(); location.reload();">Clear Local Storage</button>
+                    <button onclick="localStorage.clear(); location.reload();" style="margin: 17.5px; float: right;">Reset Application</button>
                 </div>
 
 

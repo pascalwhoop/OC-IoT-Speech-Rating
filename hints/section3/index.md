@@ -17,8 +17,30 @@ RCSwitch mySwitch = RCSwitch();
 
 
 JNIEXPORT void JNICALL Java_com_opitz_jni_NativeRCSwitchAdapter_switchOn(JNIEnv * env, jobject obj, jstring jsGroup, jstring jsChannel ){
+// TODO implement
+}
 
-    // checking wiringPi Setup
+
+}
+
+JNIEXPORT void JNICALL Java_com_opitz_jni_NativeRCSwitchAdapter_switchOff(JNIEnv * env, jobject obj, jstring jsGroup, jstring jsChannel ){
+// TODO implement
+}
+```
+
+
+NUR WENN MAN NICHT WEITER KOMMT: 
+
+(achtung spoiler!!)
+
+(achtung spoiler!!)
+
+(achtung spoiler!!)
+
+(achtung spoiler!!)
+
+```cpp
+// checking wiringPi Setup
     if (wiringPiSetup () == -1) {
        printf("noWiringPiSetup");
     }
@@ -55,15 +77,4 @@ JNIEXPORT void JNICALL Java_com_opitz_jni_NativeRCSwitchAdapter_switchOn(JNIEnv 
 	//releases the utf and informs the JVM about it
     env->ReleaseStringUTFChars(env, jsGroup, csGroup);
     env->ReleaseStringUTFChars(env, jsChannel, csChannel);
-
-}
-
-JNIEXPORT void JNICALL Java_com_opitz_jni_NativeRCSwitchAdapter_switchOff(JNIEnv * env, jobject obj, jstring jsGroup, jstring jsChannel ){
-    if (wiringPiSetup () == -1) {
-            printf("noWiringPiSetup");
-    }
-
-// TODO implement equivalent to above ON Method but turning the plug OFF instead
-// the method is mySwitch.switchOff
-}
 ```

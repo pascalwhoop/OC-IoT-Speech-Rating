@@ -1,16 +1,16 @@
 # section 6
 
-**Task**:  Create the REST Services for the Spring Application to manage users as well as simple Switches
+**Aufgabe**:  Erstelle die REST Services für die Spring Applikation um Benutzer sowie einfache Stecker zu steuern
 
-*The classes are already there, so fill their methods (with some dummy return values) and annotate them correctly*
+*Die Klassen sind bereits vorhanden, also fülle die Methoden (mit ein paar dummy Rückgabewerten) und annotiere sie korrekt*
 
-* annotate the methods in `SwitchController.java`and return some dummy values
+* Annotiere die Methoden in `SwitchController.java` und gebe ein paar Dummywerte zurück
 	* [ ] activate
 	* [ ] deactivate
 	* [ ] getAll
 	* [ ] create
 	* [ ] deleteNetworkNode
-* annotate the methods in `UserController.java`and return some dummy values
+* Annotiere die Methoden in `UserController.java`und gebe ein paar Dummywerte zurück
     * [ ] setUserState
 	* [ ] create
 	* [ ] update
@@ -18,14 +18,14 @@
 	* [ ] getAllDevices
 	* [ ] getAll
 	* [ ] findByUsername
-* Run server
+* Starte den server
 	* `mvn package`
 	* run jetty
-* call some of your methods and see if you get the values returned you set as dummy values
-	* use the IntelliJ REST Client to test your methods
-	* If you get the values returned you set up in the java code, you have created a REST service!
+* Rufe die REST Schnittstellen auf und prüfe ob die Rückgabewerte korrekt sind
+	* Nutze den IntelliJ REST client (oder einen anderen wenn du einen anderen nutzen möchtest)
+	* Richten Werte zurückbekommen? Glückwunsch!
 
-*You can expect such output when starting your jetty if your rest service were mapped successfully*
+*Solcher Output der Jetty console sollte indizieren, dass REST Services gemapped wurden*
 
 ```bash
 

@@ -70,8 +70,19 @@ body {
 }
 
 
-
+/*For Logo at the bottom left:*/
 #logo {
+    position: absolute;
+    left: 20px;
+    bottom: 0;
+}
+#logo_img{
+    min-width: 60px;
+    max-width: 128px;
+}
+
+/*For Logo up top in the middle:*/
+/*#logo {
     position: absolute;
     width: 100%;
 }
@@ -80,7 +91,7 @@ body {
     min-width: 60px;
     width: 15%;
     max-width: 128px;
-}
+}*/
 
 
 

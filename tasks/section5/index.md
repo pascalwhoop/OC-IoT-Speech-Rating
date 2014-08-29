@@ -1,21 +1,21 @@
 # section 5
 
-**Task**:  Complete the common domain so it represents the structure shown in the presentation
+**Aufgabe**:  Vervollständige die Common Domain, sodass es die Struktur wie in dem in der Präsentation enthaltenen DB und Java Klassendiagramm  hat 
 
-*All the classes are already there, so fill them with attributes and annotate the getters with the correct hibernate/jpa annotations*
+*Alle Klassen sind bereits da. Es müssen nur die Attribute erstellt sowie getter/setter annotiert werden*
 
-* Fill the classes with their attributes, getters, setters and hibernate annotations (shown in the presentation)
-	*  [ ] NetworkNode
-	* [ ] NodeLogEntry
-	* [ ] UserState
-	* [ ] ElroPowerPlug
-	* [ ] User
-	* [ ] DeviceGroup
-* Run server once
-	* make sure you set `hibernate.hbm2ddl.auto=create` in `hibernate.properties`
+*  [ ] NetworkNode
+* [ ] NodeLogEntry
+* [ ] UserState
+* [ ] ElroPowerPlug
+* [ ] User
+* [ ] DeviceGroup
+
+* Führe die Applikation einmal aus
+	* Prüfe ob du `hibernate.hbm2ddl.auto=create` in `hibernate.properties` gesetzt hast
 	* `mvn package`
-	* run jetty	
-* Connect to the DB using IntellIj
-	*  compare DB Scheme with the one from the presentation
+	* jetty	ausführen
+* Verbinde dich mit IntelliJ mit der DB
+	*  Prüfe ob das DB Schema korrekt ist
 
     
