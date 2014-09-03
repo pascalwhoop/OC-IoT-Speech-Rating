@@ -33,6 +33,7 @@ var logRating = function (userRequests, userWithNewRating, ratingType, newRating
      log.info(stringToLog);*/
 
     log.info({
+        type: "userRating",
         user: userWithNewRating,
         ratingType: ratingType,
         newRatingValue: newRatingValue,
@@ -44,7 +45,27 @@ var logRating = function (userRequests, userWithNewRating, ratingType, newRating
 
 };
 
+var logSlideChange = function (slideData) {
+    var toLog = {
+        type: "slideChange",
+        x: slideData.h,
+        y: slideData.v,
+        sectionNumber: slideData.sectionNumber
+    };
+
+    log.info(toLog);
+}
+
+var logUserComment = function (username, comment) {
+    log.info({
+        username: username,
+        comment: comment
+    });
+}
+
 
 module.exports = {
-    logRating: logRating
+    logRating: logRating,
+    logSlideChange: logSlideChange,
+    logUserComment: logUserComment
 };

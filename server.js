@@ -10,7 +10,7 @@ var app = express();
 app.use(express.bodyParser());
 
 //to not exit everything if an error is thrown
-process.on('uncaughtException', function(err) {
+process.on('uncaughtException', function (err) {
     console.log('Caught exception: ' + err);
 });
 
@@ -22,6 +22,8 @@ app.use('/static/app/bower_components/', express.static(__dirname + '/static/bow
 
 var userRequests = {};
 
+
+// ==================================================================
 //every user in the workshop calls this once he calls the website
 app.post('/api/user/:username', function (req, res) {
     var username = req.params.username;
@@ -38,6 +40,18 @@ app.post('/api/user/:username', function (req, res) {
     res.send(userRequests[username]);
 });
 
+// ==================================================================
+// user custom textual response
+
+app.post('/api/user/:username/comment', function (req, res) {
+    var username = req.params.username;
+    var comment = req.body;
+    ratingLogger.logUserComment(username, comment.text);
+    console.log("user comment received");
+    res.send("success");
+});
+
+// ==================================================================
 // our API for controlling the lights. we take the user requests here
 
 app.put('/api/user/:username/speed/:speed', function (req, res) {
@@ -64,7 +78,7 @@ app.put('/api/user/:username/speed/:speed', function (req, res) {
 
         //for later evaluation purposes
         ratingLogger.logRating(userRequests, username, "speed", speed, {hue: hue, sat: sat});
-    }else{
+    } else {
         res.send("Error, wrong values submitted");
     }
 
@@ -112,14 +126,21 @@ app.put('/api/user/:username/theory/:theory', function (req, res) {
 
         //for later evaluation purposes
         ratingLogger.logRating(userRequests, username, "theory", theory, {hue: hue, sat: sat});
-    }else{
+    } else {
         res.send("Error, wrong values submitted");
     }
+});
 
+// ==================================================================
+// This is for the speakers slide logging. Every Time the speaker
+// changes a slide, its being logged
+app.put('/api/slides', function (req, res) {
+    var slideData = req.body;
+    console.log("slide changed to h: " + slideData.h + ", v: " + slideData.v);
+    ratingLogger.logSlideChange(slideData);
 
-
-})
-
+    res.send("success");
+});
 
 // start the server and listen to the port supplied
 var server = app.listen(8080, function () {

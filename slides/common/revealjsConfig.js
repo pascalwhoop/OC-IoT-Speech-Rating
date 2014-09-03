@@ -33,7 +33,13 @@ Reveal.initialize({
         } }/*,
          { src: '../common/js/remotes/remotes.js', async: true, condition: function () {
          return !!document.body.classList;
-         } }*/
+         } }*/,
+
+        //custom rating system for our workshop
+        { src: '../common/js/oc-workshop-logger/slideLogger.js', async: true, condition: function(){
+            return !!document.body.classList;
+        }}
+
 
     ]
 });
