@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'RotisSemiSerif';
+    src: url('RotisSemiSerif.eot?') format('eot'), url('RotisSemiSerif.woff') format('woff'), url('RotisSemiSerif.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'rotissemisans';
+    src: url('rotissemisans.eot?') format('eot'), url('rotissemisans.woff') format('woff'), url('rotissemisans.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'rotissemisansitalic';
+    src: url('rotissemisansitalic.eot?') format('eot'), url('rotissemisansitalic.woff') format('woff'), url('rotissemisansitalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+
+/*======*/
+
+body {
+    font-family: "rotissemisans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+span.caption{
+    font-family: "rotissemisans", serif;
+}
+
+/*********************************************
+ * HEADERS
+ *********************************************/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "RotisSemiSerif", serif;
+}

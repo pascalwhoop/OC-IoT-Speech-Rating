@@ -1,22 +1,22 @@
-<div class="container-fluid">
+<div class="container-fluid" id="ratingPage">
     <div class="row rating-columns">
         <h2>Live workshop rating</h2>
 
-        <p>Please provide live feedback to our workshop. Every participant may give one vote for each of the two
-            displayed criteria. The vote may be changed at any time during the workshop. The average of all votes will be reflected by two lights placed in the room.</p>
 
-        <p></p>
+        <p>Bitte gebe uns direktes Feedback zu unserem Workshop. Jeder Teilnehmer kann seine Resonanz laufend verändern.
+            Der Durchschnitt aller Teilnehmerresonanzen wird durch die zwei Lampen im Raum repräsentiert.</p>
     </div>
 
     <div class="row">
         <div class="col-sm-6 rating-columns">
-            <h3>Speed</h3>
+            <h3>Geschwindigkeit</h3>
+
             <br>
         </div>
         <div class="col-sm-6 rating-columns">
-            <h3>Content</h3>
+            <h3>Inhalt</h3>
 
-            <p>(Theory vs. excercises)</p>
+            <p>(Anteil Folien vs. Übungen)</p>
             <br>
 
         </div>
@@ -24,25 +24,24 @@
     <div class="row">
         <div class="col-sm-6 rating-columns">
             <button type="button" class="btn btn-lg btn-success" ng-click="speed(1)">
-                <span class="glyphicon glyphicon-plus"></span> faster
+                <span class="glyphicon glyphicon-plus"></span>
             </button>
 
             <button type="button" class="btn btn-lg btn-default" ng-click="speed(0)">OK</button>
 
             <button type="button" class="btn btn-lg btn-danger" ng-click="speed(-1)">
-                <span class="glyphicon glyphicon-minus"></span> slower
+                <span class="glyphicon glyphicon-minus"></span>
             </button>
-
+            <br>
         </div>
         <div class="col-sm-6 rating-columns">
             <button type="button" class="btn btn-lg btn-info" ng-click="theory(-1)">
-                <span class="glyphicon glyphicon-plus"></span> more lessons
+                <span class="glyphicon glyphicon-plus"></span> Folien
             </button>
             <button type="button" class="btn btn-lg btn-default" ng-click="theory(0)">OK</button>
             <button type="button" class="btn btn-lg btn-danger" ng-click="theory(1)">
-                <span class="glyphicon glyphicon-minus"></span> fewer lessons
+                <span class="glyphicon glyphicon-minus"></span> Folien
             </button>
-
         </div>
     </div>
 
@@ -54,8 +53,8 @@
             <div class="range-container">
                 <div class="range-inner speed-range">
                     <div class="range-inner content-saturation-overlay">
-                        <span class="pull-left range-text">faster please</span>
-                        <span class="pull-right range-text">slower please</span>
+                        <!--<span class="pull-left range-text">faster please</span>
+                        <span class="pull-right range-text">slower please</span>-->
                     </div>
                 </div>
 
@@ -70,8 +69,8 @@
             <div class="range-container">
                 <div class="range-inner content-range">
                     <div class="range-inner content-saturation-overlay">
-                        <span class="pull-left range-text">move on already!</span>
-                        <span class="pull-right range-text">I need practice</span>
+                        <!--<span class="pull-left range-text">move on already!</span>
+                        <span class="pull-right range-text">I need practice</span>-->
                     </div>
 
                 </div>
@@ -80,21 +79,28 @@
         </div>
     </div>
     <hr>
-    <div class="row rating-columns fade-animation-double-container" >
+    <div class="row fade-animation-double-container rating-columns" >
 
-        <form class="form fade-animation-double" role="form" ng-if="!commentTimeout">
-            <div class="form-group">
-                <label for="commentField">Du kannst auch ein Kommentar abgeben. Dieses wird mit in unser Log geschrieben und anschließend ausgewertet:</label>
-                <input class="form-control form-control-feedback" ng-model="resonance.comment" id="commentField" placeholder="Gerade stört mich .... Mir gefiel gerade sehr gut ...."/>
+        <div class="col-sm-6 col-md-offset-3">
+            <form class="form fade-animation-double" role="form" ng-if="!commentTimeout">
+                <div class="form-group">
+                    <label for="commentField">Du kannst auch ein Kommentar abgeben. Dieses wird mit in unser Log geschrieben
+                        und anschließend ausgewertet:</label>
+                    <input class="form-control form-control-feedback" ng-model="resonance.comment" id="commentField"
+                           placeholder="Gerade stört mich .... Mir gefiel gerade sehr gut ...."/>
+                </div>
+                <small>Die Folie brauchst du nicht dazu schreiben, diese wird automatisch gemapped.</small>
+                <br>
+                <button type="submit" class="btn btn-success" ng-click="postComment(resonance.comment)">Kommentar
+                    abschicken
+                </button>
 
+            </form>
+
+
+            <div class="row rating-columns fade-animation-double" ng-if="commentTimeout">
+                <div class="alert alert-success">success</div>
             </div>
-
-            <button type="submit" class="btn btn-success" ng-click="postComment(resonance.comment)">Kommentar abschicken</button>
-        </form>
-
-
-        <div class="row rating-columns fade-animation-double" ng-if="commentTimeout">
-            <div class="alert alert-success">success</div>
         </div>
     </div>
 

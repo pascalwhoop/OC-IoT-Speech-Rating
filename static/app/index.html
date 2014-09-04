@@ -8,36 +8,50 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/OC/oc_style.css"/>
+    <!--<link rel="stylesheet" href="styles/OC/oc_font_style.css"/>-->
+    <link rel="stylesheet" href="styles/animations.css"/>
+    <link rel="stylesheet" href="styles/roboto_font_style.css"/>
     <!-- endbuild -->
 </head>
-<body ng-app="IoTWorkshopWebApp">
+<body ng-app="IoTWorkshopWebApp" ng-controller="pageContainerCtrl">
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
 <![endif]-->
 
 <!-- Add your site or application content here -->
-<div class="container page-container" ng-controller="pageContainerCtrl">
+<div class="container">
 
-        <div class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a ng-class="{ active: isActive('/')}"          ng-href="#/">Home</a></li>
-                    <li ng-class="{disabled: {{!participant.name}}}"><a ng-class="{ active: isActive('/rating')}" ng-href="#/rating">Rating</a></li>
-                    <li><a ng-class="{ active: isActive('/slides')}"    ng-href="#/slides">Slides</a></li>
-                    <li><a ng-class="{ active: isActive('/tasks')}"     ng-href="#/tasks">Tasks</a></li>
-                    <li><a ng-class="{ active: isActive('/hints')}"     ng-href="#/hints">Hints</a></li>
-                </ul>
-                <a class="navbar-brand" ng-href="#/">OC IoT Workshop</a>
-                <p class="navbar-text" ng-if="participant.name">Participant: {{participant.name}}</p>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a ng-class="{ active: isActive('/')}" ng-href="#/">Home</a></li>
+                <li ng-class="{disabled: {{!participant.name}}}"><a ng-class="{ active: isActive('/rating')}"
+                                                                    ng-href="#/rating">Rating</a></li>
+                <li><a ng-class="{ active: isActive('/slides')}" ng-href="#/slides">Slides</a></li>
+                <li><a ng-class="{ active: isActive('/tasks')}" ng-href="#/tasks">Tasks</a></li>
+                <li><a ng-class="{ active: isActive('/hints')}" ng-href="#/hints">Hints</a></li>
+            </ul>
+
+            <a class="pull-left" href="#">
+                <img class="media-object" src="styles/OC/opitz_logo_no_text.svg" height="40px;" style="margin: 5px;">
+            </a>
+
+            <div class="navbar-brand media" style="margin-top: 0px;">
+                <div class="media-body">
+                    <p class="media-heading">OC IoT Workshop</p>
+                </div>
             </div>
+
+
         </div>
+    </div>
 
 
     <div class="fade-animation-double-container ng-view-container">
@@ -45,38 +59,15 @@
     </div>
 
 
-    <div class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container">
-            <div class="row">
 
-                <div class="col-xs-4">
-                    <p id="copyright" class="nadbar-text"><a href="http://www.opitz-consulting.com">About & Contact</a> ---- &copy; 2013 OPITZ CONSULTING Deutschland GmbH</p>
-                </div>
-                <div class="col-xs-4">
-                    <a href="http://www.opitz-consulting.de" target="_blank">
-                        <img src="styles/OC/Opitz_Logo_V1.svg" alt="oc-logo" id="oc-logo" />
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <!--for debug only TODO remove-->
-                    <button onclick="localStorage.clear(); location.reload();" style="margin: 17.5px; float: right;">Reset Application</button>
-                </div>
-
-
-
-            </div>
-
-        </div>
-
-
-    </div>
 
 
 </div>
+<div id="copyright-container">
+    <p id="copyright"><a href="http://www.opitz-consulting.com" target="_blank">&copy; 2014 OPITZ CONSULTING Deutschland GmbH</a></p>
+    <a onclick="localStorage.clear(); location.reload();"><div style="float: right; width: 150px; height: 19px; background-color: #E0E0E0" ><p style="padding-left: 5px">{{participant.name}} (Logout)</p></div></a>
 
-
-
-
+</div>
 
 
 <!--[if lt IE 9]>
