@@ -48,7 +48,7 @@
     <hr>
     <div class="row">
         <div class="col-sm-6 rating-columns">
-            <h4>Color range for speed lamp</h4>
+            <h4>Farbspektrum für Geschwindigkeitslampe</h4>
 
             <div class="range-container">
                 <div class="range-inner speed-range">
@@ -64,7 +64,7 @@
         </div>
 
         <div class="col-sm-6 rating-columns">
-            <h4>Color range for content lamp</h4>
+            <h4>Farbspektrum für Inhaltslampe</h4>
 
             <div class="range-container">
                 <div class="range-inner content-range">
@@ -86,11 +86,11 @@
                 <div class="form-group">
                     <label for="commentField">Du kannst auch ein Kommentar abgeben. Dieses wird mit in unser Log geschrieben
                         und anschließend ausgewertet:</label>
+                    <small>Die Folie brauchst du nicht dazu schreiben, diese wird automatisch gemapped.</small>
+                    <br>
                     <input class="form-control form-control-feedback" ng-model="resonance.comment" id="commentField"
                            placeholder="Gerade stört mich .... Mir gefiel gerade sehr gut ...."/>
                 </div>
-                <small>Die Folie brauchst du nicht dazu schreiben, diese wird automatisch gemapped.</small>
-                <br>
                 <button type="submit" class="btn btn-success" ng-click="postComment(resonance.comment)">Kommentar
                     abschicken
                 </button>
