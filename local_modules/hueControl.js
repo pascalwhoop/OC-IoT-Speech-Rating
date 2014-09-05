@@ -5,7 +5,7 @@ client = new Client();
 
 var hueConf = {
     username: "pascaldeveloper",
-    apiURL: "http://169.254.16.11/api",
+    apiURL: "http://192.168.200.3/api",
     workshopLampIDs: {
         speed: "2",
         theory: "3"
@@ -14,6 +14,37 @@ var hueConf = {
     lights: "/lights"
 
 };
+
+
+var callForCoffee = function () {
+    var urlTheory = hueConf.apiURL + "/" + hueConf.username + hueConf.lights + "/" + hueConf.workshopLampIDs.theory + "/state";
+    var urlSpeed = hueConf.apiURL + "/" + hueConf.username + hueConf.lights + "/" + hueConf.workshopLampIDs.speed + "/state";
+
+    var args = {
+        data: JSON.stringify({
+            "alert": "lselect"
+        })
+    }
+
+
+    //set both lamps to perform breath cycles
+    client.put(urlSpeed, args, function (data) {});
+    client.put(urlTheory, args, function (data) {});
+
+
+    //stop them after a while
+    var newArgs = {
+        data: JSON.stringify({
+            "alert": "none"
+        })
+    }
+
+    setTimeout(function(){
+        client.put(urlSpeed, newArgs, function(data){})
+        client.put(urlTheory, newArgs, function(data){})
+    }, 3000)
+
+}
 
 var setTheoryColor = function (hue, sat) {
     var url = hueConf.apiURL + "/" + hueConf.username + hueConf.lights + "/" + hueConf.workshopLampIDs.theory + "/state";
@@ -139,6 +170,7 @@ var calcSaturation = function (userRequests, type) {
 };
 
 module.exports = {
+    callForCoffee: callForCoffee,
     getLamps: getLamps,
     setTheoryColor: setTheoryColor,
     setSpeedColor: setSpeedColor,

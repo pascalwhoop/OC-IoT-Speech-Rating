@@ -97,3 +97,22 @@ body {
     font-weight: bold;
 }
 
+#coffeeContainer{
+    background-color: rgb(198,0,2); padding: 10px;
+}
+
+#coffeeContainer:hover{
+    background-color: rgb(153, 0, 2);
+}
+
+#coffeeContainer:active{
+    background-color: rgb(232, 0, 2);
+}
+
+#coffeeHelp a:link, #coffeeHelp a:visited, #coffeeHelp a:hover, #coffeeHelp a:active{
+    color: black;
+    text-decoration: none;
+
+}
+
+

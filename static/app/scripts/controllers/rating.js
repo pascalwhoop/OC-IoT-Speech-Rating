@@ -50,6 +50,10 @@ angular.module('IoTWorkshopWebApp')
                 });
         }
 
+        $scope.callForCoffee = function(){
+            $http.post("/api/user/" + $scope.participant.username + "/coffee");
+        }
+
 
 
     });

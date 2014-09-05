@@ -52,6 +52,17 @@ app.post('/api/user/:username/comment', function (req, res) {
 });
 
 // ==================================================================
+// user call for coffee
+
+app.post('/api/user/:username/coffee', function (req, res) {
+    var username = req.params.username;
+    hueControl.callForCoffee();
+    ratingLogger.logUserComment(username, "I NEED COFFEE !!!");
+    console.log("user coffee request received");
+    res.send("success");
+});
+
+// ==================================================================
 // our API for controlling the lights. we take the user requests here
 
 app.put('/api/user/:username/speed/:speed', function (req, res) {

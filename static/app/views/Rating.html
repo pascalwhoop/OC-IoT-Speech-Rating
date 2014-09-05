@@ -79,12 +79,13 @@
         </div>
     </div>
     <hr>
-    <div class="row fade-animation-double-container rating-columns" >
+    <div class="row fade-animation-double-container rating-columns">
 
-        <div class="col-sm-6 col-md-offset-3">
+        <div class="col-sm-8" style="background-color: #d5d7d6; padding: 5px;">
             <form class="form fade-animation-double" role="form" ng-if="!commentTimeout">
                 <div class="form-group">
-                    <label for="commentField">Du kannst auch ein Kommentar abgeben. Dieses wird mit in unser Log geschrieben
+                    <label for="commentField">Du kannst auch ein Kommentar abgeben. Dieses wird mit in unser Log
+                        geschrieben
                         und anschließend ausgewertet:</label>
                     <small>Die Folie brauchst du nicht dazu schreiben, diese wird automatisch gemapped.</small>
                     <br>
@@ -102,6 +103,22 @@
                 <div class="alert alert-success">success</div>
             </div>
         </div>
-    </div>
 
+        <div class="col-sm-4" id="coffeeHelp">
+
+            <div id="coffeeContainer">
+                <a href="" ng-click="callForCoffee()">
+
+                    <img class="pull-left" src="images/coffee.jpg" alt="..." height="100px">
+                    <span style="line-height: 50px">Klicke hier für eine <strong>dringende Kaffepause</strong>   </span>
+
+                </a>
+
+                <div style="display: block; clear: both;"></div>
+            </div>
+
+
+        </div>
+
+    </div>
 </div>
