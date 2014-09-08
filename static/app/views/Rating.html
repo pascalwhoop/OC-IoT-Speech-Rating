@@ -1,10 +1,12 @@
 <div class="container-fluid" id="ratingPage">
     <div class="row rating-columns">
-        <h2>Live workshop rating</h2>
+        <div class="col-sm-8 col-sm-offset-2">
+            <h2>Live workshop rating</h2>
 
 
-        <p>Bitte gebe uns direktes Feedback zu unserem Workshop. Jeder Teilnehmer kann seine Resonanz laufend verändern.
-            Der Durchschnitt aller Teilnehmerresonanzen wird durch die zwei Lampen im Raum repräsentiert.</p>
+            <p>Bitte gebe uns direktes Feedback zu unserem Workshop. Jeder Teilnehmer kann seine Resonanz laufend verändern.
+                Der Durchschnitt aller Teilnehmerresonanzen wird durch die zwei Lampen im Raum repräsentiert.</p>
+        </div>
     </div>
 
     <div class="row">
@@ -23,15 +25,16 @@
     </div>
     <div class="row">
         <div class="col-sm-6 rating-columns">
-            <button type="button" class="btn btn-lg btn-success" ng-click="speed(1)">
-                <span class="glyphicon glyphicon-plus"></span>
-            </button>
-
-            <button type="button" class="btn btn-lg btn-default" ng-click="speed(0)">OK</button>
 
             <button type="button" class="btn btn-lg btn-danger" ng-click="speed(-1)">
                 <span class="glyphicon glyphicon-minus"></span>
             </button>
+            <button type="button" class="btn btn-lg btn-default" ng-click="speed(0)">OK</button>
+            <button type="button" class="btn btn-lg" ng-click="speed(1)"
+                    style="background-color: #8EFF00; color: #808080;">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+
             <br>
         </div>
         <div class="col-sm-6 rating-columns">
@@ -52,12 +55,13 @@
 
             <div class="range-container">
                 <div class="range-inner speed-range">
-                    <div class="range-inner content-saturation-overlay">
+                    <div class="range-inner colorrange-saturation-overlay">
                         <!--<span class="pull-left range-text">faster please</span>
                         <span class="pull-right range-text">slower please</span>-->
                     </div>
                 </div>
-
+                <input type="range" class="range-slider" min="-1" max="1" ng-model="resonance.speed" id="speed-slider"
+                       ng-change="speed(resonance.speed)" title="Dies spiegelt deinen eigenen abgegebenen Wert dar" data-toggle="tooltip"/>
             </div>
 
 
@@ -67,13 +71,14 @@
             <h4>Farbspektrum für Inhaltslampe</h4>
 
             <div class="range-container">
-                <div class="range-inner content-range">
-                    <div class="range-inner content-saturation-overlay">
+                <div class="range-inner theory-range">
+                    <div class="range-inner colorrange-saturation-overlay">
                         <!--<span class="pull-left range-text">move on already!</span>
                         <span class="pull-right range-text">I need practice</span>-->
                     </div>
-
                 </div>
+                <input type="range" class="range-slider" min="-1" max="1" ng-model="resonance.theory" id="theory-slider"
+                       ng-change="theory(resonance.theory)" title="Dies spiegelt deinen eigenen abgegebenen Wert dar" data-toggle="tooltip"/>
 
             </div>
         </div>
@@ -81,8 +86,9 @@
     <hr>
     <div class="row fade-animation-double-container rating-columns">
 
-        <div class="col-sm-8" style="background-color: #d5d7d6; padding: 5px;">
-            <form class="form fade-animation-double" role="form" ng-if="!commentTimeout">
+        <div class="col-sm-8 ">
+            <form class="form fade-animation-double img-rounded" role="form" ng-if="!commentTimeout"
+                  style="background-color: #d5d7d6; padding: 5px;">
                 <div class="form-group">
                     <label for="commentField">Du kannst auch ein Kommentar abgeben. Dieses wird mit in unser Log
                         geschrieben
@@ -104,21 +110,30 @@
             </div>
         </div>
 
-        <div class="col-sm-4" id="coffeeHelp">
-
-            <div id="coffeeContainer">
-                <a href="" ng-click="callForCoffee()">
-
-                    <img class="pull-left" src="images/coffee.jpg" alt="..." height="100px">
-                    <span style="line-height: 50px">Klicke hier für eine <strong>dringende Kaffepause</strong>   </span>
-
+        <div class="col-sm-3 col-sm-offset-1 ">
+                <a href="" ng-click="callForCoffee()" id="coffeeHelp" title="Klicke hier, wenn du ohne Kaffe keine Sekunde mehr aushälst" data-toggle="tooltip">
+                    <img class="img-rounded" src="images/coffee2.png" alt="coffee" >
+                    <div id="coffee-overlay"></div>
                 </a>
 
-                <div style="display: block; clear: both;"></div>
-            </div>
+
 
 
         </div>
 
     </div>
+
 </div>
+
+
+<!--<form class="navbar-form navbar-default navbar-fixed-bottom" role="search" style="margin-bottom: 20px; padding: 10px;">
+    <div class="form-group" style="width: 100%;">
+        <label for="commentField-footer" class="sr-only">Du kannst auch ein Kommentar abgeben. Dieses wird mit in
+            unser Log geschrieben und anschließend ausgewertet:</label>
+        <input class="form-control form-control-feedback" ng-model="resonance.comment" id="commentField-footer"
+               placeholder="Gib gerne jederzeit ein Kommentar ab: Gerade stört mich .... Mir gefiel gerade sehr gut .... (Nur für Leiter sichtbar)" style="width: 100%;"/>
+    </div>
+    <button type="submit" ng-show="false" class="btn btn-success" ng-click="postComment(resonance.comment)">Kommentar
+        abschicken
+    </button>
+</form>-->

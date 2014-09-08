@@ -1,4 +1,4 @@
-# section 4
+# Block 4
 
 **Aufgabe**: Konfiguriere Spring mit den xml Konfiguratonsdateien um eine Umgebung zu schaffen, in der der gesamte folgende Javacode entwickelt werden kann.
 

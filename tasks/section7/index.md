@@ -1,4 +1,4 @@
-# section 7
+# Block 7
 
 **Aufgabe**: Update den Spring Service `ElroPowerPlugServiceImpl` sodass es die JNI Klasse zum schalten nutzt und die DB aktualisiert
 

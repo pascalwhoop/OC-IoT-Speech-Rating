@@ -22,12 +22,11 @@ angular.module('IoTWorkshopWebApp')
             location.reload();
         };
 
-        //we register the user with the server
-        $scope.registerUserWithServer = function(){
-            $http.post("/api/user/" + $scope.participant.name).success(function(result){
-                console.log(result);
-            })
-        }
+        $scope.registerUserWithServer = function () {
+            $http.post("/api/user/" + $scope.participant.name).then(function (response) {
+                console.log("user registered");
+            });
+        };
 
         $scope.validateUsername = function () {
             var patt = /^([a-z|0-9]){1,20}$/i;

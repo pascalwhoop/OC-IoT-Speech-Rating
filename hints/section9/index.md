@@ -1,4 +1,4 @@
-# section 9
+# Block 9
 
 ## Camunda Process Configuration for `mvc-dispatcher-servlet.xml`
 

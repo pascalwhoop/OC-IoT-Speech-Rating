@@ -1,4 +1,4 @@
-# section 6
+# Block 6
 
 **Aufgabe**:  Erstelle die REST Services für die Spring Applikation um Benutzer sowie einfache Stecker zu steuern
 

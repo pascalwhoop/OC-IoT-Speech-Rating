@@ -1,4 +1,4 @@
-# section 7
+# Block 7
 
 * Use the `@Autowired` annotation to inject a Spring annotated class into another one. 
 * Always inject the interface, spring will find the corresponding implementing class

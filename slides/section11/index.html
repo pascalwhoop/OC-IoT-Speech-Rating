@@ -70,6 +70,27 @@
                     <p>Jeder Knotenpunkt aggregiert Events der "darunterliegenden" Knotenpunkte</p>
                 </aside>
             </section>
+
+            <section>
+                <img src="../common/img/iot_architecture.png" alt=""/>
+
+                <div style="
+        position: absolute;
+        width: 150px;
+        height: 60px;
+        border: 10px solid red;
+        top: 26.9%;
+        left: 48.2%;"></div>
+
+                <div style="
+        position: absolute;
+        width: 147px;
+        height: 200px;
+        border: 10px solid red;
+        top: 67.5%;
+        left: 65.6%;"></div>
+            </section>
+
             <section><img src="images/matroska.png" alt=""/>
                 <aside class="notes">
                     <p>Bild aus Einstiegsvortrag, A Thing is a thing is a thing is a thing</p>
@@ -157,9 +178,61 @@
                 </aside>
             </section>
 
+            <section data-markdown>
+                <script type="text/template">
+                    * 12c Version fast fertig. Dann mit jDeveloper / WLS
+                    * 11g noch mit Eclipse Indigo Plugin
+
+                    Note:
+                    * 12c läuft wohl schon aber embedded noch nicht, daher auch für uns nur 11g
+                    * 11g eclipse plugin in VM unter separatem (älteren) eclipse vorhanden
+                </script>
+            </section>
+
+            <section>
+                <img src="images/cep_EPN.png" alt="" class="stretch"/>
+
+                <aside class="notes">
+                    <p>Complex Event Processing Network bietet übersicht über die Eventnetzwerke. Mehrere Dateien können dabei zusammengelegt werden</p>
+                    <p>Zeigt anschaulich (ähnlich BPMN) den Verlauf der Daten. In sog. "Processors" können dann "CQL" Queries auf die Daten losgelassen werden</p>
+                    <p>CQL queries sind optimiert auf sich ständig verändernde Datenstreams, syntax SQL basiert.</p>
+                </aside>
+            </section>
+
+            <section>
+                <pre><code><pre>&lt;processor&gt;
+    &lt;name&gt;alertsProcessor&lt;/name&gt;
+    &lt;rules&gt;
+    &lt;view id="susView"&gt;&lt;![CDATA[
+   				select  SUM(1) as c,
+                        sensorid,  avg(temp) as temp,
+                        "sustained" as alerttype,
+                        "sustained temperature abnormally" as text
+        		from AlertsInputChannel [RANGE 60 SECOND]
+        		group by sensorid
+        		HAVING   SUM(1) &gt; 5
+    ]]&gt;&lt;/view&gt;
+      &lt;query id="susQuery"&gt;
+        &lt;![CDATA[ select sensorid, temp, alerttype, text from susView
+        ]]&gt;
+      &lt;/query&gt;
+    &lt;/rules&gt;
+  &lt;/processor&gt;</pre></code></pre>
+
+                <aside class="notes">
+                    <p>Hat als Input Datenquellen (ähnlich wie Tabellen in SQL) von denen es gewisse Daten filtert und weitergibt</p>
+                    <p>Prozessoren müssen nicht in CQL geschrieben werden. Prototyp nutzt POJO's, da ich kein SQL Fan bin.</p>
+                </aside>
+            </section>
+            
+            <section>
+                <img src="images/cep_cql_processor.gif" alt="" style="width: 70%"/>
+            </section>
 
 
         </section>
+
+
 
 
     </div>

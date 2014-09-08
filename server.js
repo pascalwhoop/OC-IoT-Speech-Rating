@@ -63,6 +63,16 @@ app.post('/api/user/:username/coffee', function (req, res) {
 });
 
 // ==================================================================
+// user successfully completed section 11 with CEP events and sends them to the system
+
+app.post('/api/user/:username/cepevent', function (req, res) {
+    var username = req.params.username;
+    var message = req.body.message;
+    console.log("CEP Event submitted by User: " + username + "\nEvent message: " + message);
+    res.send("success");
+});
+
+// ==================================================================
 // our API for controlling the lights. we take the user requests here
 
 app.put('/api/user/:username/speed/:speed', function (req, res) {
@@ -72,13 +82,7 @@ app.put('/api/user/:username/speed/:speed', function (req, res) {
     console.log("user " + username + " wants speed " + speed);
     if (speed == 1 || speed == 0 || speed == -1) {
 
-        //add user if for some reason not yet present
-        if (!userRequests[username]) {
-            userRequests[username] = {
-                speed: 0,
-                theory: 0
-            }
-        }
+
 
         userRequests[username].speed = speed;
         res.send(userRequests[username]);
@@ -119,14 +123,6 @@ app.put('/api/user/:username/theory/:theory', function (req, res) {
     console.log("user " + username + " wants theory " + theory);
 
     if (theory == 1 || theory == 0 || theory == -1) {
-
-        //add user if for some reason not yet present
-        if (!userRequests[username]) {
-            userRequests[username] = {
-                speed: 0,
-                theory: 0
-            }
-        }
 
         userRequests[username].theory = theory;
         res.send(userRequests[username]);

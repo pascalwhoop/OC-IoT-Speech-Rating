@@ -1,4 +1,4 @@
-# section 3
+# Block 3
 
 ## Code for com_opitz_jni_NativeRCSwitchAdapter.cpp
 

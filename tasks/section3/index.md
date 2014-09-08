@@ -1,4 +1,4 @@
-# section 3
+# Block 3
 
 
 **Aufgabe**: Schreibe ein Java Native Interface um die Steckdosen aus Java heraus zu steuern. Wir brauchen dafür zwei Methoden (ON / OFF) welche den unit und group code der Stecker (z.B. 01101 01110) entgegen nehmen.

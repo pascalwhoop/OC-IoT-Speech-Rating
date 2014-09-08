@@ -1,4 +1,4 @@
-# section 3
+# Block 3
 
 **Aufgabe:** Verbinde dich mit dem Raspberry Pi und steuere die Steckdose mit den nativen Bibliotheken
 
