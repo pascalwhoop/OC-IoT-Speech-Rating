@@ -28,30 +28,76 @@
 <!-- Add your site or application content here -->
 <div class="container">
 
-    <div class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a ng-class="{ active: isActive('/')}" ng-href="#/">Home</a></li>
-                <li ng-class="{disabled: {{!participant.name}}}"><a ng-class="{ active: isActive('/rating')}"
-                                                                    ng-href="#/rating">Rating</a></li>
-                <li><a ng-class="{ active: isActive('/slides')}" ng-href="#/slides">Folien</a></li>
-                <li><a ng-class="{ active: isActive('/tasks')}" ng-href="#/tasks">Aufgaben</a></li>
-                <li><a ng-class="{ active: isActive('/hints')}" ng-href="#/hints">Tipps</a></li>
-            </ul>
 
-            <a class="pull-left" href="#">
-                <img class="media-object" src="styles/OC/opitz_logo_no_text.svg" height="40px;" style="margin: 5px;">
-            </a>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
 
-            <div class="navbar-brand media" style="margin-top: 0px;">
-                <div class="media-body">
-                    <p class="media-heading">OC IoT Workshop</p>
+                <!--visible when collapsed, then our navigation is inserted here-->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="pull-left" href="#">
+                    <img class="media-object" src="styles/OC/opitz_logo_no_text.svg" height="40px;"
+                         style="margin: 5px;">
+                </a>
+
+                <div class="navbar-brand media" style="margin-top: 0px;">
+                    <div class="media-body">
+                        <p class="media-heading">OC IoT Workshop</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a ng-class="{ active: isActive('/')}" ng-href="#/">Home</a></li>
+                    <li ng-class="{disabled: {{!participant.name}}}"><a ng-class="{ active: isActive('/rating')}"
+                                                                        ng-href="#/rating">Rating</a></li>
+                    <li><a ng-class="{ active: isActive('/slides')}" ng-href="#/slides">Folien</a></li>
+                    <li><a ng-class="{ active: isActive('/tasks')}" ng-href="#/tasks">Aufgaben</a></li>
+                    <li><a ng-class="{ active: isActive('/hints')}" ng-href="#/hints">Tipps</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+    </nav>
+
+    <!--<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav ">
+                    <li><a ng-class="{ active: isActive('/')}" ng-href="#/">Home</a></li>
+                    <li ng-class="{disabled: {{!participant.name}}}"><a ng-class="{ active: isActive('/rating')}"
+                                                                        ng-href="#/rating">Rating</a></li>
+                    <li><a ng-class="{ active: isActive('/slides')}" ng-href="#/slides">Folien</a></li>
+                    <li><a ng-class="{ active: isActive('/tasks')}" ng-href="#/tasks">Aufgaben</a></li>
+                    <li><a ng-class="{ active: isActive('/hints')}" ng-href="#/hints">Tipps</a></li>
+                </ul>
+            </div>
+
+            <div class="nav navbar-left">
+                <a class="pull-left" href="#">
+                    <img class="media-object" src="styles/OC/opitz_logo_no_text.svg" height="40px;" style="margin: 5px;">
+                </a>
+
+                <div class="navbar-brand media" style="margin-top: 0px;">
+                    <div class="media-body">
+                        <p class="media-heading">OC IoT Workshop</p>
+                    </div>
                 </div>
             </div>
 
 
         </div>
-    </div>
+    </nav>-->
 
 
     <div class="fade-animation-double-container ng-view-container">
@@ -59,13 +105,14 @@
     </div>
 
 
-
-
-
 </div>
 <div id="copyright-container">
-    <p id="copyright"><a href="http://www.opitz-consulting.com" target="_blank">&copy; 2014 OPITZ CONSULTING Deutschland GmbH</a></p>
-    <a onclick="localStorage.clear(); location.reload();"><div style="float: right; width: 150px; height: 19px; background-color: #E0E0E0" ><p style="padding-left: 5px">{{participant.name}} (Logout)</p></div></a>
+    <p id="copyright"><a href="http://www.opitz-consulting.com" target="_blank">&copy; 2014 OPITZ CONSULTING Deutschland
+        GmbH</a></p>
+    <a onclick="localStorage.clear(); location.reload();">
+        <div style="float: right; width: 150px; height: 19px; background-color: #E0E0E0"><p style="padding-left: 5px">
+            {{participant.name}} (Logout)</p></div>
+    </a>
 
 </div>
 
@@ -81,6 +128,7 @@
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/json3/lib/json3.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/bootstrap/js/collapse.js"></script>
 <script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="bower_components/angular-cookies/angular-cookies.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>

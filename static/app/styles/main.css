@@ -7,20 +7,27 @@
         position: relative !important;
         top: auto;
     }
+
+    body {
+        padding-top: 0;
+        padding-bottom: 20px;
+    }
 }
 
+@media (min-width: 768px) {
+    body {
+        height: 100%;
+        padding-top: 70px;
+        width: 100%;
+        padding-bottom: 20px;
+    }
+}
 
 /* Space out content a bit due to header and footer*/
-body {
-    height: 100%;
-    padding-top: 70px;
-    width: 100%;
-    padding-bottom: 20px;
-}
 
 /* Custom page footer */
 
-#copyright-container{
+#copyright-container {
     position: fixed;
     right: 0;
     left: 0;
@@ -30,10 +37,9 @@ body {
     border-top: 1px solid #e5e5e5;
     z-index: 1030;
 
-
 }
 
-#copyright{
+#copyright {
     position: fixed;
     margin: 0 auto 0 auto;
     padding: 1.5px;
@@ -50,29 +56,32 @@ body {
     font-size: 1.3em;
 }
 
-/* Rating columns for page to rate speed vs content */
+/* Rating columns for page to rate speed vs content *//*
 #ratingPage .rating-columns {
     text-align: center;
-}
+}*/
 
 /* container to display the rating colors the lamps might display*/
 
 #ratingPage .range-container {
-    width: 95%;
     margin: 0 auto 0 auto;
 
 }
 
 #ratingPage .range-inner {
-    width: 95%;
     margin: 0 auto 0 auto;
     height: 30px;
 }
 
 #ratingPage .range-slider {
-    width: 95%;
-    margin: 10px auto 10px auto;
+    margin: 5px auto 10px auto;
 
+}
+
+#ratingPage .element-box {
+    background-color: #efefef;
+    padding: 10px;
+    border-radius: 6px;
 }
 
 #ratingPage .speed-range {
@@ -103,15 +112,15 @@ body {
     font-weight: bold;
 }
 
-#coffeeHelp img{
+#coffeeHelp img {
     padding: 4px;
 }
 
-#coffeeHelp img:hover{
+#coffeeHelp img:hover {
     background-color: sandybrown;
 }
 
-#coffeeHelp img:active{
+#coffeeHelp img:active {
     background-color: sandybrown;
     box-shadow: 0 0 20px 5px sandybrown;
 }

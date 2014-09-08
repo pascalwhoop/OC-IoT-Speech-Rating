@@ -1,7 +1,7 @@
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
-@media (min-width: 480px) {
+@media (min-width: 768px) {
     body {
         background: #fff url(OC_Brushes.svg);
         background-repeat: no-repeat;

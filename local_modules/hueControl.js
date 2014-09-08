@@ -100,11 +100,11 @@ var calcTheoryColor = function (userRequests) {
     //we use the count to determine how many users we have in the workshop
     var count = 0;
     //the speedSum determines what color the lamp should display
-    var speedSum = 0;
+    var theorySum = 0;
     for (var user in userRequests) {
         if (userRequests.hasOwnProperty(user)) {
             count++;
-            speedSum += userRequests[user].theory;
+            theorySum += userRequests[user].theory;
         }
     }
     //if we have 10 participants the range of values for speedSum is [-10 ; 10] so 21 possible values and therefore 20 possible steps.
@@ -112,10 +112,10 @@ var calcTheoryColor = function (userRequests) {
 
     // this value will be the amount of steps to take from the "bottom" which would be 12750 or yellow color code
     // if count is 10 and speedSum is -4 (meaning 4 more clicked slower than faster) the new value would be 6 meaning 6*stepSize + yellow = color to display
-    var stepsToTake = speedSum + count;
+    var stepsToTake = theorySum + count;
     var hue = stepsToTake * stepSize + blue;
 
-    console.log("Lamp color code for Theory will be: " + '' + hue);
+    printUserRatingDetails(userRequests, "theory");    //console.log("Lamp color code for Theory will be: " + '' + hue);
     return hue;
 };
 
@@ -142,7 +142,8 @@ var calcSpeedColor = function (userRequests) {
     var stepsToTake = speedSum + count;
     var hue = stepsToTake * stepSize + yellow;
 
-    console.log("Lamp color code for speed will be: " + '' + hue);
+    printUserRatingDetails(userRequests, "speed");
+    //console.log("Lamp color code for speed will be: " + '' + hue);
     return hue;
 };
 
@@ -168,6 +169,30 @@ var calcSaturation = function (userRequests, type) {
     var saturation = (NO_SAT + stepsToTake * stepSize) - FULL_SAT;
     return Math.abs(saturation);
 };
+
+var printUserRatingDetails = function(userRequests, type){
+    var userCount=0,
+        neg=0,
+        nul=0,
+        plus = 0;
+        var sum = 0;
+
+    for (var user in userRequests) {
+        if (userRequests.hasOwnProperty(user)) {
+            userCount++;
+            switch(userRequests[user][type]){
+                case 1:
+                    plus++;break;
+                case 0:
+                    nul++;break;
+                case -1:
+                    neg++;break;
+            }
+            sum += userRequests[user][type];
+        }
+    }
+    console.log(userCount + " Users: (-1): " + neg + " (0): " + nul + " (1): " + plus + " Sum: " + sum);
+}
 
 module.exports = {
     callForCoffee: callForCoffee,
