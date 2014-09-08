@@ -463,34 +463,34 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 </head>
 <body class="normal firstload">
   <div id="wrapper">
-      <h1 id="block4">Block 4</h1>
+      <h1 id="block11">Block 11</h1>
 
-<p><strong>Aufgabe</strong>: Konfiguriere Spring mit den xml Konfiguratonsdateien um eine Umgebung zu schaffen, in der der gesamte folgende Javacode entwickelt werden kann.</p>
-
-<ol>
-<li>Schaue dir die neue Projektstruktur an
+<p><strong>Aufgabe</strong>: Erstelle ein kleines EPN das jeweils zwei zufällig generierte Werte in einem Processor verarbeitet und bei einer bestimmten Kombination von Werten ein Event weitergibt. </p>
 
 <ol>
-<li>Es sind einige neue Maven Module hinzugekommen</li>
-<li>Importiere diese als Module in IntelliJ, wenn dies nicht selbstständig geschieht</li>
+<li>Erstelle ein neues CEP Projekt im CEP Eclipse
+
+<ol>
+<li>Nutze die HelloWorld Vorlage. Dort kannst du dir einiges abgucken</li>
 </ol></li>
-<li>Fülle die servlet Konfiguration mit den notwendigen bean Konfigurationen
+<li>Erstelle zwei Adapter
 
 <ol>
-<li>Öffne die Datei <code>mvc-dispatcher-servlet.xml</code> im <code>rest-camunda</code> Modul</li>
-<li>Füge alle notwendigen beans hinzu um unsere spring/hibernate/jackson Umgebung zu konfigurieren
-
-<ul>
-<li><em>look at the hints for this section to get the code snippets</em></li>
-</ul></li>
-<li>Verstehst du alle Konfigurationen?</li>
+<li>Einen der regelmäßig (z.B. alle 30ms) Double Werte zufällig generiert.</li>
+<li>Einen der regelmäßig int werte in einem bestimmten Bereich (z.B. 1&#8211;10.000) generiert</li>
 </ol></li>
-<li>Erstelle eine run configuration mit intellij um den aktuellen maven build auf einem jetty server zu deployen
+<li>Erstelle einen Processor</li>
+<li>Erstelle je ein Event für die doubles und eins für die int-Werte</li>
+<li>Verbinde die Adapter mit dem Processor über einen Channel und schicke die Events von den Adaptern an den Processor</li>
+<li>Schreibe eine Logik für den Processor in CQL
 
-<ul>
-<li><em>siehe screenshots in den Tipps</em></li>
-</ul></li>
-<li>öffne einen Browser unter localhost:8080 und schaue ob das servlet deployed wurde</li>
+<ol>
+<li>Gebe nur ein Event weiter, wenn das int-Event einen int-Wert enthält welcher %10 = 0 ergibt.</li>
+<li>Gebe nur ein Event weiter, wenn der double Wert &lt; 0.05 ist.</li>
+<li>Diese beiden Bedingungen sollen beide zutreffen um ein Event weiterzugeben</li>
+</ol></li>
+<li>Gebe die gefilterten Events weiter an eine Bean, welche die Events auf der Konsole ausgibt.</li>
+<li>ALTERNATIV: Gebe die Events weiter an den Schulungsserver (auch in einer Bean) an die URI <code>/api/user/:username/cepevent</code> und einem <code>POST</code> Befehl</li>
 </ol>
 <div style="display:none"><br/>
 <!--This seemingly unnecessary div markup is the only thing keeping this script working after Markdown conversion. Trust me.--><br/>

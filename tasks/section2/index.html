@@ -463,34 +463,23 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 </head>
 <body class="normal firstload">
   <div id="wrapper">
-      <h1 id="block4">Block 4</h1>
+      <h1 id="block3">Block 3</h1>
 
-<p><strong>Aufgabe</strong>: Konfiguriere Spring mit den xml Konfiguratonsdateien um eine Umgebung zu schaffen, in der der gesamte folgende Javacode entwickelt werden kann.</p>
-
-<ol>
-<li>Schaue dir die neue Projektstruktur an
+<p><strong>Aufgabe:</strong> Verbinde dich mit dem Raspberry Pi und steuere die Steckdose mit den nativen Bibliotheken</p>
 
 <ol>
-<li>Es sind einige neue Maven Module hinzugekommen</li>
-<li>Importiere diese als Module in IntelliJ, wenn dies nicht selbstständig geschieht</li>
+<li>Verbinde dich via SSH</li>
+<li>cd to <code>~/applications/OC-IoT-Workshop-Sources/rc-switch-jni-wrapper/src</code></li>
+<li><code>make</code> ausführen</li>
+<li>Steuere die Lampen mit der <code>send</code> anwendung
+
+<ol>
+<li><code>sudo send 10110 10110 1</code>
+
+<ol>
+<li>Die ersten beiden Parameter sind die DIP Switches der Funkstekcdose, der Dritte ist ON / OFF</li>
 </ol></li>
-<li>Fülle die servlet Konfiguration mit den notwendigen bean Konfigurationen
-
-<ol>
-<li>Öffne die Datei <code>mvc-dispatcher-servlet.xml</code> im <code>rest-camunda</code> Modul</li>
-<li>Füge alle notwendigen beans hinzu um unsere spring/hibernate/jackson Umgebung zu konfigurieren
-
-<ul>
-<li><em>look at the hints for this section to get the code snippets</em></li>
-</ul></li>
-<li>Verstehst du alle Konfigurationen?</li>
 </ol></li>
-<li>Erstelle eine run configuration mit intellij um den aktuellen maven build auf einem jetty server zu deployen
-
-<ul>
-<li><em>siehe screenshots in den Tipps</em></li>
-</ul></li>
-<li>öffne einen Browser unter localhost:8080 und schaue ob das servlet deployed wurde</li>
 </ol>
 <div style="display:none"><br/>
 <!--This seemingly unnecessary div markup is the only thing keeping this script working after Markdown conversion. Trust me.--><br/>

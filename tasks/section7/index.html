@@ -463,34 +463,27 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 </head>
 <body class="normal firstload">
   <div id="wrapper">
-      <h1 id="block4">Block 4</h1>
+      <h1 id="block7">Block 7</h1>
 
-<p><strong>Aufgabe</strong>: Konfiguriere Spring mit den xml Konfiguratonsdateien um eine Umgebung zu schaffen, in der der gesamte folgende Javacode entwickelt werden kann.</p>
+<p><strong>Aufgabe</strong>: Update den Spring Service <code>ElroPowerPlugServiceImpl</code> sodass es die JNI Klasse zum schalten nutzt und die DB aktualisiert</p>
+
+<p><em>Alle anderen Methoden sind bereits implementiert. Die meisten geben nur einfache CRUD Operationen weiter oder führen constraint checks aus.</em></p>
 
 <ol>
-<li>Schaue dir die neue Projektstruktur an
+<li>Implementiere die Methode: <code>ElroPowerPlug setState(ElroPowerPlug elroPowerPlug, boolean state)</code>
 
 <ol>
-<li>Es sind einige neue Maven Module hinzugekommen</li>
-<li>Importiere diese als Module in IntelliJ, wenn dies nicht selbstständig geschieht</li>
+<li>Nutze die JNI Klasse zum steuern der Lampen</li>
+<li>Update die DB mittels der vorhandenen Domain Access Object (DAO) Klasse</li>
 </ol></li>
-<li>Fülle die servlet Konfiguration mit den notwendigen bean Konfigurationen
+<li>Verbinde den <code>SwitchController</code> mit dem <code>ElroPowerPlugService</code> mittels Springs Dependency Injection
 
 <ol>
-<li>Öffne die Datei <code>mvc-dispatcher-servlet.xml</code> im <code>rest-camunda</code> Modul</li>
-<li>Füge alle notwendigen beans hinzu um unsere spring/hibernate/jackson Umgebung zu konfigurieren
-
-<ul>
-<li><em>look at the hints for this section to get the code snippets</em></li>
-</ul></li>
-<li>Verstehst du alle Konfigurationen?</li>
+<li>Injeziere den Service</li>
+<li>Rufe die richtigen Methoden auf um die Anfragen an die Services weiterzugeben</li>
 </ol></li>
-<li>Erstelle eine run configuration mit intellij um den aktuellen maven build auf einem jetty server zu deployen
-
-<ul>
-<li><em>siehe screenshots in den Tipps</em></li>
-</ul></li>
-<li>öffne einen Browser unter localhost:8080 und schaue ob das servlet deployed wurde</li>
+<li>Mache das gleiche für den <code>UserController</code></li>
+<li>Teste ob der REST Service jetzt das Licht kontrolliert</li>
 </ol>
 <div style="display:none"><br/>
 <!--This seemingly unnecessary div markup is the only thing keeping this script working after Markdown conversion. Trust me.--><br/>

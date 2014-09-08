@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>section3</title>
+  <title>index</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
 
@@ -459,56 +459,56 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 }
 #generated-toc-clone li.missing,#mkreplaced-toc li.missing{list-style-type:none!important}#generated-toc-clone li, #mkreplaced-toc li{list-style-type:upper-roman}#generated-toc-clone li li, #mkreplaced-toc li li{list-style-type:decimal}#generated-toc-clone li li li,#mkreplaced-toc li li li{list-style-type:decimal-leading-zero}#generated-toc-clone li li li li,#mkreplaced-toc li li li li{list-style-type:lower-greek}#generated-toc-clone li li li li li,#mkreplaced-toc li li li li li{list-style-type:disc}#generated-toc-clone li li li li li li,#mkreplaced-toc li li li li li li{list-style-type:square}
 </style>
-<style>#wrapper { max-width:1100px; margin:0 auto }</style>
+
 </head>
-<body class="normal suppressprintlinks firstload">
+<body class="normal firstload">
   <div id="wrapper">
-      <h1 id="section3">section 3</h1>
+      <h1 id="block3">Block 3</h1>
 
-<p><strong>Task</strong>: Build a Java Native Interface to control the plugs from a Java Application. All we need is be able to turn them ON and OFF with an arbitrary unit and group code (the way you configured your plugs).</p>
-
-<ol>
-<li>Write the java side of the JNI code
+<p><strong>Aufgabe</strong>: Schreibe ein Java Native Interface um die Steckdosen aus Java heraus zu steuern. Wir brauchen dafür zwei Methoden (ON / OFF) welche den unit und group code der Stecker (z.B. 01101 01110) entgegen nehmen.</p>
 
 <ol>
-<li>Open the java class file <code>NativeRCSwitchAdapter.java</code> in the <code>rc-switch-jni-wrapper</code> module</li>
-<li>load the java native libraries into the java application</li>
-<li>implement the method stubs for the native methods <code>switchOn</code>and <code>switchOff</code>
+<li>Implementiere die Java Klasse
+
+<ol>
+<li>Öffne die Javaklasse <code>NativeRCSwitchAdapter.java</code> im <code>rc-switch-jni-wrapper</code> Modul</li>
+<li>Lade die native library in der Java Applikation, sodass auf diese zugegriffen werden kann. (die .so Dateien)</li>
+<li>Implementiere die Methodenköpfe für die <code>switchOn</code>und <code>switchOff</code> Methoden
 
 <ul>
-<li><em>Hint: a native interface method is of the form</em> <code>public native &lt;returnValue&gt; &lt;methodName&gt;(&lt;parameters&gt;);</code></li>
-<li><em>there is no method body, it will be in the native (C) code</em></li>
+<li><em>Tipp: Eine native interface Methode hat die Form:</em> <code>public native &lt;returnValue&gt; &lt;methodName&gt;(&lt;parameters&gt;);</code></li>
+<li><em>Der Methodenkörper ist im C Code abgelegt</em></li>
 </ul></li>
 </ol></li>
-<li>Compile the java class and create the C header files
+<li>Kompiliere die Java Klasse und erstelle die C header files
 
 <ol>
-<li>Open a terminal (or command line) window and switch to <code>&lt;project_root&gt;/rc-switch-jni-wrapper/src</code></li>
-<li>compile the java class with <code>javac com/opitz/jni/NativeRCSwitchAdapter.java</code></li>
-<li>create the C header file with <code>javah com.opitz.jni.NativeRCSwitchAdapter</code></li>
+<li>Öffne eine Kommandozeile und wechsele zu <code>&lt;project_root&gt;/rc-switch-jni-wrapper/src</code></li>
+<li>Kompiliere die Javaklasse mit <code>javac com/opitz/jni/NativeRCSwitchAdapter.java</code></li>
+<li>Erstelle die C header Dateien mit <code>javah com.opitz.jni.NativeRCSwitchAdapter</code></li>
 </ol></li>
-<li>write the corresponding C code for our java native interface
+<li>Schreibe den C Code, welcher durch die Javamethoden ausgeführt werden soll
 
 <ol>
-<li>look at the newly created file <code>com_opitz_jni_NativeRCSwitchAdapter.h</code></li>
-<li>create a file with the same name but the file extension <code>.cpp</code></li>
-<li>Paste the code from the section 3 hints section in the file and complete the <code>switchOff</code> function to perform the desired functionality. You can use much of the code in the above <code>switchOn</code>function but try to understand what happens there. Native code is an important part to the IoT</li>
+<li>Schaue dir die Datei <code>com_opitz_jni_NativeRCSwitchAdapter.h</code> an</li>
+<li>Erstelle eine gleich genannte Datei aber mit vom Typ <code>.cpp</code></li>
+<li>Kopiere den Code aus den Tipps und verfollständige die <code>switchOff</code> Funktion . Wenn du nicht weiter kommst nutze den Code im Tipp, versuche jedoch erstmal selber zu entwickeln und aus diesem nur Ideen zu ziehen</li>
 </ol></li>
-<li>Move your code to the raspberry pi and test run it
+<li>Verschiebe deinen entwickelten Code auf den Pi und teste ihn
 
 <ol>
-<li>open your raspberry pi via sftp (ssh based file transfer)
+<li>Öffne eine sftp Verbindung zum Raspberry Pi (ssh based file transfer)
 
 <ol>
-<li>This <a href="http://trevorappleton.blogspot.de/2014/03/remotely-copy-files-to-and-from-your.html">Guide</a> for filezilla may help</li>
+<li>Dieser <a href="http://trevorappleton.blogspot.de/2014/03/remotely-copy-files-to-and-from-your.html">Guide</a> für filezilla hilft vielleicht</li>
 </ol></li>
-<li>Transfer only the changed files to the raspberry pi</li>
-<li>compile the <code>Main.java</code> class in the adapter module</li>
-<li>run it from a command line with your DIP settings as parameters
+<li>Verschiebe die geänderten Datein auf den Pi</li>
+<li>kompiliere die <code>Main.java</code> Klasse im Adaptermodul</li>
+<li>Führe Das Programm auf der Kommandozeile aus und übergebe deine Steckeraddresse als Parameter
 
 <ol>
 <li><code>java Main 11111 00000</code> for example</li>
-<li>check if your lamp switches on and off with a delay of two seconds</li>
+<li>Deine Lampe sollte sich mit einer Verzögerung von 2 Sekunden ein und ausschalten</li>
 </ol></li>
 </ol></li>
 </ol>

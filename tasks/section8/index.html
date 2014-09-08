@@ -463,34 +463,22 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 </head>
 <body class="normal firstload">
   <div id="wrapper">
-      <h1 id="block4">Block 4</h1>
+      <h1 id="block8">Block 8</h1>
 
-<p><strong>Aufgabe</strong>: Konfiguriere Spring mit den xml Konfiguratonsdateien um eine Umgebung zu schaffen, in der der gesamte folgende Javacode entwickelt werden kann.</p>
-
-<ol>
-<li>Schaue dir die neue Projektstruktur an
+<p><strong>Task</strong>: Nutze die Mobile Applikation und steuer damit die Lampe über den REST Service. </p>
 
 <ol>
-<li>Es sind einige neue Maven Module hinzugekommen</li>
-<li>Importiere diese als Module in IntelliJ, wenn dies nicht selbstständig geschieht</li>
+<li>Downloade das git repository für das frontend
+
+<ol>
+<li><code>git clone https://github.com/pascalwhoop/Pi-jAutomation433_Frontend.git</code></li>
 </ol></li>
-<li>Fülle die servlet Konfiguration mit den notwendigen bean Konfigurationen
-
-<ol>
-<li>Öffne die Datei <code>mvc-dispatcher-servlet.xml</code> im <code>rest-camunda</code> Modul</li>
-<li>Füge alle notwendigen beans hinzu um unsere spring/hibernate/jackson Umgebung zu konfigurieren
-
-<ul>
-<li><em>look at the hints for this section to get the code snippets</em></li>
-</ul></li>
-<li>Verstehst du alle Konfigurationen?</li>
-</ol></li>
-<li>Erstelle eine run configuration mit intellij um den aktuellen maven build auf einem jetty server zu deployen
-
-<ul>
-<li><em>siehe screenshots in den Tipps</em></li>
-</ul></li>
-<li>öffne einen Browser unter localhost:8080 und schaue ob das servlet deployed wurde</li>
+<li>cd in das git repo und <code>npm install</code> (installiert die node dependencies)</li>
+<li><code>bower install</code> (installiert javascript webapp application dependencies)</li>
+<li><code>grunt server</code> (startet einen lokalen server welcher die mobile app hostet)</li>
+<li>Damit die Applikation auf den REST Service zugreifen kann öffne chrome erneut über die Kommandozeile: <code>chromium --disable-web-security</code> (in der Linux debian VM)</li>
+<li>Gebe deine IP Adresse in den Einstellungen ein und erstelle eine Benutzer + einen Stecker</li>
+<li>Schalte den Stecker ein. Schaue ob die jetty Konsole dies wiedergibt.</li>
 </ol>
 <div style="display:none"><br/>
 <!--This seemingly unnecessary div markup is the only thing keeping this script working after Markdown conversion. Trust me.--><br/>
