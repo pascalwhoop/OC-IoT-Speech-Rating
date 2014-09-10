@@ -485,14 +485,14 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 <ol>
 <li>Öffne eine Kommandozeile und wechsele zu <code>&lt;project_root&gt;/rc-switch-jni-wrapper/src</code></li>
 <li>Kompiliere die Javaklasse mit <code>javac com/opitz/jni/NativeRCSwitchAdapter.java</code></li>
-<li>Erstelle die C header Dateien mit <code>javah com.opitz.jni.NativeRCSwitchAdapter</code></li>
+<li>Erstelle die C header Dateien mit <code>/usr/lib/jvm/jdk1.8.0_20/bin/javah com.opitz.jni.NativeRCSwitchAdapter</code></li>
 </ol></li>
 <li>Schreibe den C Code, welcher durch die Javamethoden ausgeführt werden soll
 
 <ol>
 <li>Schaue dir die Datei <code>com_opitz_jni_NativeRCSwitchAdapter.h</code> an</li>
 <li>Erstelle eine gleich genannte Datei aber mit vom Typ <code>.cpp</code></li>
-<li>Kopiere den Code aus den Tipps und verfollständige die <code>switchOff</code> Funktion . Wenn du nicht weiter kommst nutze den Code im Tipp, versuche jedoch erstmal selber zu entwickeln und aus diesem nur Ideen zu ziehen</li>
+<li>Kopiere den ersten Codeblock aus den Tipps und verfollständige die <code>switchOff</code> sowie <code>switchOn</code> Funktionen . Wenn du nicht weiter kommst nutze den Code im Tipp (zweiter Block), versuche jedoch erstmal selber zu entwickeln und aus diesem nur Ideen zu ziehen</li>
 </ol></li>
 <li>Verschiebe deinen entwickelten Code auf den Pi und teste ihn
 

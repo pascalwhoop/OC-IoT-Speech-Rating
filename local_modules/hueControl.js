@@ -5,7 +5,7 @@ client = new Client();
 
 var hueConf = {
     username: "pascaldeveloper",
-    apiURL: "http://192.168.200.3/api",
+    apiURL: "http://192.168.200.103/api",
     workshopLampIDs: {
         speed: "2",
         theory: "3"

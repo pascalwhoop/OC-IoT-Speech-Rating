@@ -13,11 +13,11 @@
 2. Kompiliere die Java Klasse und erstelle die C header files
 	1. Öffne eine Kommandozeile und wechsele zu `<project_root>/rc-switch-jni-wrapper/src`
 	1. Kompiliere die Javaklasse mit `javac com/opitz/jni/NativeRCSwitchAdapter.java`
-	2. Erstelle die C header Dateien mit `javah com.opitz.jni.NativeRCSwitchAdapter`
+	2. Erstelle die C header Dateien mit `/usr/lib/jvm/jdk1.8.0_20/bin/javah com.opitz.jni.NativeRCSwitchAdapter`
 3. Schreibe den C Code, welcher durch die Javamethoden ausgeführt werden soll
 	1. Schaue dir die Datei `com_opitz_jni_NativeRCSwitchAdapter.h` an
 	2. Erstelle eine gleich genannte Datei aber mit vom Typ `.cpp`
-	3. Kopiere den Code aus den Tipps und verfollständige die `switchOff` Funktion . Wenn du nicht weiter kommst nutze den Code im Tipp, versuche jedoch erstmal selber zu entwickeln und aus diesem nur Ideen zu ziehen
+	3. Kopiere den ersten Codeblock aus den Tipps und verfollständige die `switchOff` sowie `switchOn` Funktionen . Wenn du nicht weiter kommst nutze den Code im Tipp (zweiter Block), versuche jedoch erstmal selber zu entwickeln und aus diesem nur Ideen zu ziehen
 4. Verschiebe deinen entwickelten Code auf den Pi und teste ihn
 	1. Öffne eine sftp Verbindung zum Raspberry Pi (ssh based file transfer)
 		1. Dieser [Guide](http://trevorappleton.blogspot.de/2014/03/remotely-copy-files-to-and-from-your.html) für filezilla hilft vielleicht
