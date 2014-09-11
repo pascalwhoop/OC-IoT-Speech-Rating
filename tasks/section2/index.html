@@ -469,12 +469,21 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
 <ol>
 <li>Verbinde dich via SSH</li>
-<li>cd to <code>~/applications/OC-IoT-Workshop-Sources/rc-switch-jni-wrapper/src</code></li>
+<li>cd to `~/applications/</li>
+<li>Klone das Git und wechsele zum ersten branch
+
+<ol>
+<li><code>git clone https://github.com/opitzconsulting/OC-IoT-Workshop-Sources.git</code></li>
+<li>cd in das neu erstellte Verzeichnis</li>
+<li><code>git fetch</code></li>
+<li><code>git checkout section3</code></li>
+</ol></li>
+<li><code>rc-switch-jni-wrapper/src</code></li>
 <li><code>make</code> ausführen</li>
 <li>Steuere die Lampen mit der <code>send</code> anwendung
 
 <ol>
-<li><code>sudo send 10110 10110 1</code>
+<li><code>sudo ./send 10110 10110 1</code>
 
 <ol>
 <li>Die ersten beiden Parameter sind die DIP Switches der Funkstekcdose, der Dritte ist ON / OFF</li>
