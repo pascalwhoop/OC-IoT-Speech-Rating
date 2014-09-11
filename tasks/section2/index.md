@@ -8,7 +8,7 @@
 	1. `git clone https://github.com/opitzconsulting/OC-IoT-Workshop-Sources.git`
 	2. cd in das neu erstellte Verzeichnis
 	3. `git fetch`
-	4. `git checkout section3`
+	4. `git checkout section2`
 4. `rc-switch-jni-wrapper/src`
 5. `make` ausführen
 6. Steuere die Lampen mit der `send` anwendung
