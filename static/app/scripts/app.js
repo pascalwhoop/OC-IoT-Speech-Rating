@@ -43,6 +43,10 @@ angular
                 templateUrl: 'views/hints.html',
                 controller: 'HintCtrl'
             })
+            .when('/logging',{
+                templateUrl: 'views/logging.html',
+                controller:'LoggingCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });

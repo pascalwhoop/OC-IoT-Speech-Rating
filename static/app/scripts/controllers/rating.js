@@ -77,7 +77,7 @@ angular.module('IoTWorkshopWebApp')
 
         //calling the backend and submitting a coffee request
         $scope.callForCoffee = function () {
-            $http.post("/api/user/" + $scope.participant.username + "/coffee");
+            $http.post("/api/user/" + $scope.participant.name + "/coffee");
         }
 
 

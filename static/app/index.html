@@ -18,6 +18,13 @@
     <link rel="stylesheet" href="styles/animations.css"/>
     <link rel="stylesheet" href="styles/roboto_font_style.css"/>
     <!-- endbuild -->
+
+    <!--loading google API for Charts-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.load("visualization", "1", {packages:["corechart"]});
+    </script>
+
 </head>
 <body ng-app="IoTWorkshopWebApp" ng-controller="pageContainerCtrl">
 <!--[if lt IE 7]>
@@ -148,6 +155,7 @@
 <script src="scripts/controllers/rating.js"></script>
 <script src="scripts/controllers/slide.js"></script>
 <script src="scripts/controllers/task.js"></script>
+<script src="scripts/controllers/logging.js"></script>
 
 
 <script src="scripts/services/localStorageService.js"></script>

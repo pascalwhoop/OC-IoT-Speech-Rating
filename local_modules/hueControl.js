@@ -120,9 +120,9 @@ var calcTheoryColor = function (userRequests) {
 };
 
 var calcSpeedColor = function (userRequests) {
-    var yellow = 0;
-    var green = 25500;
-    var span = green - yellow;
+    var red = 0;
+    var limegreen = 25500;
+    var span = limegreen - red;
 
     //we use the count to determine how many users we have in the workshop
     var count = 0;
@@ -140,7 +140,7 @@ var calcSpeedColor = function (userRequests) {
     // this value will be the amount of steps to take from the "bottom" which would be 12750 or yellow color code
     // if count is 10 and speedSum is -4 (meaning 4 more clicked slower than faster) the new value would be 6 meaning 6*stepSize + yellow = color to display
     var stepsToTake = speedSum + count;
-    var hue = stepsToTake * stepSize + yellow;
+    var hue = stepsToTake * stepSize + red;
 
     printUserRatingDetails(userRequests, "speed");
     //console.log("Lamp color code for speed will be: " + '' + hue);

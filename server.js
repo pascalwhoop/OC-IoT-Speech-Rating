@@ -2,6 +2,7 @@
 var express = require('express');
 var hueControl = require('./local_modules/hueControl.js');
 var ratingLogger = require('./local_modules/ratingHistory.js');
+var loggingStatistics = require('./local_modules/loggingStatistics.js');
 
 
 /* ########     app creationand configuration      ########*/
@@ -83,7 +84,6 @@ app.put('/api/user/:username/speed/:speed', function (req, res) {
     if (speed == 1 || speed == 0 || speed == -1) {
 
 
-
         userRequests[username].speed = speed;
         res.send(userRequests[username]);
 
@@ -148,6 +148,22 @@ app.put('/api/slides', function (req, res) {
 
     res.send("success");
 });
+
+// ==================================================================
+// retrieve logging data here
+app.get('/api/logs', function (req, res) {
+    loggingStatistics.getAllLogFiles(function(files){
+        res.send(files);
+    })
+});
+
+app.get('/api/logs/:logFileName', function (req, res) {
+
+    loggingStatistics.getLogFile(req.params.logFileName, function(loggingContent){
+        res.send(loggingContent);
+    })
+});
+
 
 // start the server and listen to the port supplied
 var server = app.listen(8080, function () {

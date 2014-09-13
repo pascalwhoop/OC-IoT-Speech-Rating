@@ -8,7 +8,7 @@
 
 1. Integriere die Camunda Prozessengine in die Spring Applikation
 	1. Füge die notwendige Konfiguration in die `mvc-dispater-servlet.xml` Datei ein.
-	2. Starte die Applikation, prüfe im Log ob die Camunda Engine hochgefahrne ist
+	2. Starte die Applikation, prüfe im Log ob die Camunda Engine hoch gefahren ist
 2. Füge den BPMN Prozess zur Applikation hinzu und starte diesen vom Controller aus
 	1. Erstelle eine`META-INF/processes.xml` Datei in `src/main/resources` vom `rest-camunda` Modul
 	2. Füge den  `plug-switch-process` zum Prozessarchiv hinzu
