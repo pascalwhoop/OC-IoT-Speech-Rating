@@ -10,12 +10,15 @@ angular.module('IoTWorkshopWebApp')
 
         $scope.logFileSelected = function (logSelected) {
             $scope.logFileSelected = LogFiles.query({id: logSelected.filename}, function(success){
+                //adding a google chart
                 prepareDataAndDrawChart(success);
             });
+
+            //pre settings for table
             $scope.predicate = 'time';
             $scope.reverse = false;
 
-            //adding a google chart
+
         }
 
 
@@ -34,17 +37,23 @@ angular.module('IoTWorkshopWebApp')
                     if(logFileSelected[i].ratingType == 'speed'){
                         speedData.push(angular.copy(logFileSelected[i]));
                     }
-
                 }
             }
 
+            //google chart needs arrays as inputs
             theoryData = convertDataObjectsToArrays(theoryData, "theory");
             speedData  = convertDataObjectsToArrays(speedData, "speed");
 
-            drawChart(theoryData, {},          'theory_chart');
-            drawChart(speedData, {},  'speed_chart');
+            drawChart(theoryData, {curveType: 'function'}, 'theory_chart');
+            drawChart(speedData, {curveType: 'function'},  'speed_chart');
         }
 
+        /**
+         *
+         * @param dataArray : the dataArray in which the data is in.
+         * @param type
+         * @returns {Array}
+         */
         var convertDataObjectsToArrays = function(dataArray, type){
             var returnArray = [];
 
