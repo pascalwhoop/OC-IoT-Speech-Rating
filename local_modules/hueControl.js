@@ -1,4 +1,5 @@
 var Client = require('node-rest-client').Client;
+//var ratingLogger = require('./local_modules/ratingHistory.js');
 /*  https://www.npmjs.org/package/node-rest-client  */
 client = new Client();
 
@@ -7,66 +8,22 @@ var hueConf = {
     username: "pascaldeveloper",
     apiURL: "http://192.168.200.103/api",
     workshopLampIDs: {
-        speed: "2",
-        theory: "3"
-    },
-    /*keep this as it is the official HUE API*/
-    lights: "/lights"
-
+        blue: "2",
+        red: "3"
+    }
 };
 
 
-var callForCoffee = function () {
-    var urlTheory = hueConf.apiURL + "/" + hueConf.username + hueConf.lights + "/" + hueConf.workshopLampIDs.theory + "/state";
-    var urlSpeed = hueConf.apiURL + "/" + hueConf.username + hueConf.lights + "/" + hueConf.workshopLampIDs.speed + "/state";
+var satBlue = 0;
+var satRed = 0;
 
-    var args = {
-        data: JSON.stringify({
-            "alert": "lselect"
-        })
-    }
-
-
-    //set both lamps to perform breath cycles
-    client.put(urlSpeed, args, function (data) {});
-    client.put(urlTheory, args, function (data) {});
-
-
-    //stop them after a while
-    var newArgs = {
-        data: JSON.stringify({
-            "alert": "none"
-        })
-    }
-
-    setTimeout(function(){
-        client.put(urlSpeed, newArgs, function(data){})
-        client.put(urlTheory, newArgs, function(data){})
-    }, 3000)
-
-}
-
-var setTheoryColor = function (hue, sat) {
-    var url = hueConf.apiURL + "/" + hueConf.username + hueConf.lights + "/" + hueConf.workshopLampIDs.theory + "/state";
-
-    var args = {
-        data: JSON.stringify({
-            "on": true,
-            "hue": hue,
-            "sat": sat
-        })
-    };
-
-    client.put(url, args, function (data) {
-
-        // parsed response body as js object
-    });
-};
+var red = 65280;
+var blue = 46920;
 
 var getLamps = function (callback) {
     // registering remote methods
     // direct way
-    var url = hueConf.apiURL + "/" + hueConf.username + hueConf.lights;
+    var url = hueConf.apiURL + "/" + hueConf.username + "/lights";
 
     client.get(url, function (data) {
         // parsed response body as js object
@@ -74,55 +31,39 @@ var getLamps = function (callback) {
     });
 };
 
-var setSpeedColor = function (hue, sat) {
-    var url = hueConf.apiURL + "/" + hueConf.username + hueConf.lights + "/" + hueConf.workshopLampIDs.speed + "/state";
+var sendSpeedUpdateAndUpdateCurrentSatValues = function (newSatBlue, newSatRed) {
+    var url = hueConf.apiURL + "/" + hueConf.username + "/lights/" + hueConf.workshopLampIDs.blue + "/state";
+    var args = {data: JSON.stringify({sat: satBlue, hue: blue})};
+    client.put(url, args, function (data) {});
 
+    url = hueConf.apiURL + "/" + hueConf.username + "/lights/" + hueConf.workshopLampIDs.red + "/state";
+    args = {data: JSON.stringify({sat: satRed, hue: red})};
+    client.put(url, args, function (data) {});
 
-    var args = {
-        data: JSON.stringify({
-            "on": true,
-            "hue": hue,
-            "sat": sat
-        })
-    };
-
-    client.put(url, args, function (data) {
-
-        // parsed response body as js object
-    });
+    satBlue = newSatBlue;
+    satRed = newSatRed;
 };
 
-var calcTheoryColor = function (userRequests) {
-    var blue = 46920;
-    var red = 65280;
-    var span = red - blue;
+//set lamps to red and blue and saturation 0
+    var resetLamps = function () {
 
-    //we use the count to determine how many users we have in the workshop
-    var count = 0;
-    //the speedSum determines what color the lamp should display
-    var theorySum = 0;
-    for (var user in userRequests) {
-        if (userRequests.hasOwnProperty(user)) {
-            count++;
-            theorySum += userRequests[user].theory;
-        }
-    }
-    //if we have 10 participants the range of values for speedSum is [-10 ; 10] so 21 possible values and therefore 20 possible steps.
-    var stepSize = Math.floor(span / (count * 2));
 
-    // this value will be the amount of steps to take from the "bottom" which would be 12750 or yellow color code
-    // if count is 10 and speedSum is -4 (meaning 4 more clicked slower than faster) the new value would be 6 meaning 6*stepSize + yellow = color to display
-    var stepsToTake = theorySum + count;
-    var hue = stepsToTake * stepSize + blue;
+    var url = hueConf.apiURL + "/" + hueConf.username + "/lights/" + hueConf.workshopLampIDs.blue + "/state";
+    var args = {data: JSON.stringify({on: true, hue: blue, sat: 0})};
+    client.put(url, args, function (data) {});
 
-    printUserRatingDetails(userRequests, "theory");    //console.log("Lamp color code for Theory will be: " + '' + hue);
-    return hue;
-};
+    url = hueConf.apiURL + "/" + hueConf.username + "/lights/" + hueConf.workshopLampIDs.red + "/state";
+    args = {data: JSON.stringify({on: true, hue: red, sat: 0})};
+    client.put(url, args, function (data) {});
 
-var calcSpeedColor = function (userRequests) {
-    var red = 0;
-    var limegreen = 25500;
-    var span = limegreen - red;
+
+}
+resetLamps();
+
+
+var handleSpeedRequest = function (userRequests) {
+
+    var span = 255;
 
     //we use the count to determine how many users we have in the workshop
     var count = 0;
@@ -131,62 +72,65 @@ var calcSpeedColor = function (userRequests) {
     for (var user in userRequests) {
         if (userRequests.hasOwnProperty(user)) {
             count++;
-            speedSum += userRequests[user].speed;
+            speedSum += userRequests[user];
         }
     }
-    //if we have 10 participants the range of values for speedSum is [-10 ; 10] so 21 possible values and therefore 20 possible steps.
-    var stepSize = Math.floor(span / (count * 2));
+    //if half of the people vote one direction, the corresponding lamp should be 100% saturated in the color it displays (red / blue)
+    var maxUsersThreshold = Math.floor(count/2)+1;
 
-    // this value will be the amount of steps to take from the "bottom" which would be 12750 or yellow color code
-    // if count is 10 and speedSum is -4 (meaning 4 more clicked slower than faster) the new value would be 6 meaning 6*stepSize + yellow = color to display
-    var stepsToTake = speedSum + count;
-    var hue = stepsToTake * stepSize + red;
+    //these are the values we intend to calculate
+    var newSatBlue = 0;
+    var newSatRed = 0;
 
-    printUserRatingDetails(userRequests, "speed");
-    //console.log("Lamp color code for speed will be: " + '' + hue);
-    return hue;
-};
+    console.log("speedsum: " + speedSum + "user count: " + count);
 
-var calcSaturation = function (userRequests, type) {
-    var sum = 0;
-    var FULL_SAT = 255;
-    var NO_SAT = 0;
-    var userCount = 0;
+    //if the overall mood is "slower" --> blue stays sat=0, red will be determined
+    if(speedSum < 0){
+        var percentage = Math.abs(speedSum)/maxUsersThreshold;
+        newSatRed = Math.floor(percentage * span);
 
+    }else if(speedSum > 0){
+        var percentage = Math.abs(speedSum)/maxUsersThreshold;
+        newSatBlue = Math.floor(percentage * span);
 
-    for (var user in userRequests) {
-        if (userRequests.hasOwnProperty(user)) {
-            userCount++;
-            sum += userRequests[user][type];
-        }
     }
 
-    //if we have 10 participants the range of values for sum is [-10 ; 10] so 21 possible values and therefore 20 possible steps. our range is twice FULL_SAT
-    var stepSize = Math.floor((FULL_SAT * 2) / (userCount * 2));
-    var stepsToTake = sum + userCount;
-
-    //now we get a range from -255 to 0 to 255 (because we substract 255 at the end so no steps is -255 and stepsize is so large that with 10 users and 10 steps we end up with 2*255)
-    var saturation = (NO_SAT + stepsToTake * stepSize) - FULL_SAT;
-    return Math.abs(saturation);
+    setColorsIfDiffSignificant(newSatBlue, newSatRed);
+    //TODO setting the colors
 };
 
-var printUserRatingDetails = function(userRequests, type){
-    var userCount=0,
-        neg=0,
-        nul=0,
+
+var setColorsIfDiffSignificant = function(newSatBlue, newSatRed){
+    var redDiff = Math.abs(satRed - newSatRed);
+    var blueDiff = Math.abs(satBlue - newSatBlue);
+
+    if ( redDiff > 10 || blueDiff > 10){
+        sendSpeedUpdateAndUpdateCurrentSatValues(newSatBlue, newSatRed);
+        console.log("red will sat: " + newSatRed + " blue will sat: " + newSatBlue);
+
+    }
+}
+
+var printUserRatingDetails = function (userRequests, type) {
+    var userCount = 0,
+        neg = 0,
+        nul = 0,
         plus = 0;
-        var sum = 0;
+    var sum = 0;
 
     for (var user in userRequests) {
         if (userRequests.hasOwnProperty(user)) {
             userCount++;
-            switch(userRequests[user][type]){
+            switch (userRequests[user][type]) {
                 case 1:
-                    plus++;break;
+                    plus++;
+                    break;
                 case 0:
-                    nul++;break;
+                    nul++;
+                    break;
                 case -1:
-                    neg++;break;
+                    neg++;
+                    break;
             }
             sum += userRequests[user][type];
         }
@@ -195,11 +139,7 @@ var printUserRatingDetails = function(userRequests, type){
 }
 
 module.exports = {
-    callForCoffee: callForCoffee,
     getLamps: getLamps,
-    setTheoryColor: setTheoryColor,
-    setSpeedColor: setSpeedColor,
-    calcTheoryColor: calcTheoryColor,
-    calcSpeedColor: calcSpeedColor,
-    calcSaturation: calcSaturation
+    handleSpeedRequest: handleSpeedRequest,
+    resetLamps: resetLamps
 };

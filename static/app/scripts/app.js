@@ -20,28 +20,8 @@ angular
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'views/main.html',
-                controller: 'MainCtrl'
-            })
-            .when('/slides', {
-                templateUrl: 'views/slides.html',
-                controller: 'SlideCtrl'
-            })
-            .when('/tasks', {
-                templateUrl: 'views/tasks.html',
-                controller: 'TaskCtrl'
-            })
-            .when('/rating', {
                 templateUrl: 'views/rating.html',
                 controller: 'RatingCtrl'
-            })
-            .when('/about', {
-                templateUrl: 'views/about.html',
-                controller: 'AboutCtrl'
-            })
-            .when('/hints', {
-                templateUrl: 'views/hints.html',
-                controller: 'HintCtrl'
             })
             .when('/logging',{
                 templateUrl: 'views/logging.html',

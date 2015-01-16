@@ -1,213 +1,21 @@
 <div class="container-fluid" id="ratingPage">
     <div class="row rating-columns">
         <div class="col-sm-12 text-center">
-            <h2>Live workshop rating</h2>
+            <h2>Live speech rating</h2>
 
 
-            <p>Bitte gebe uns direktes Feedback zu unserem Workshop. Jeder Teilnehmer kann seine Resonanz laufend
-                verändern.
-                Der Durchschnitt aller Teilnehmerresonanzen wird durch die zwei Lampen im Raum repräsentiert.</p>
-        </div>
-    </div>
-
-    <div class="row element-box">
-        <div class="col-sm-4 col-sm-offset-0 text-center">
-            <h3 class="">Inhalt</h3>
-
-            <div class="btn-group btn-group-lg ">
-                <button type="button" class="btn btn-info" ng-click="theory(-1)">
-                    <span class="glyphicon glyphicon-plus"></span> Folien
-                </button>
-                <button type="button" class="btn btn-default" ng-click="theory(0)">OK</button>
-                <button type="button" class="btn btn-danger" ng-click="theory(1)">
-                    <span class="glyphicon glyphicon-minus"></span> Folien
-                </button>
-            </div>
-
-        </div>
-
-        <div class="col-sm-7 col-sm-offset-1 text-center" style="padding-top: 20px;">
-            <h4>Farbspektrum für Inhaltslampe</h4>
-
-            <div class="range-container">
-                <div class="range-inner theory-range">
-                    <div class="range-inner colorrange-saturation-overlay">
-                        <!--<span class="pull-left range-text">move on already!</span>
-                        <span class="pull-right range-text">I need practice</span>-->
-                    </div>
-                </div>
-                <input type="range" class="range-slider" min="-1" max="1" ng-model="resonance.theory" id="theory-slider"
-                       ng-change="theory(resonance.theory)" title="Dies spiegelt deinen eigenen abgegebenen Wert dar"
-                       data-toggle="tooltip"/>
-
-            </div>
-        </div>    </div>
-
-    <hr>
-    <div class="row element-box">
-        <div class="col-sm-4 col-sm-offset-0 text-center">
-            <h3 class="">Geschwindigkeit</h3>
-
-            <div class="btn-group btn-group-lg ">
-                <button type="button" class="btn btn-danger" ng-click="speed(-1)">
-                    <span class="glyphicon glyphicon-minus"></span>
-                </button>
-                <button type="button" class="btn  btn-default" ng-click="speed(0)">OK</button>
-                <button type="button" class="btn " ng-click="speed(1)"
-                        style="background-color: #8EFF00; color: #808080;">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </button>
-            </div>
-
-        </div>
-
-
-        <div class="col-sm-7 col-sm-offset-1 text-center" style="padding-top: 20px;">
-            <h4>Farbspektrum für Geschwindigkeitslampe</h4>
-
-            <div class="range-container">
-                <div class="range-inner speed-range">
-                    <div class="range-inner colorrange-saturation-overlay">
-                        <!--<span class="pull-left range-text">faster please</span>
-                        <span class="pull-right range-text">slower please</span>-->
-                    </div>
-                </div>
-                <input type="range" class="range-slider" min="-1" max="1" ng-model="resonance.speed" id="speed-slider"
-                       ng-change="speed(resonance.speed)" title="Dies spiegelt deinen eigenen abgegebenen Wert dar"
-                       data-toggle="tooltip"/>
-            </div>
-        </div>
-    </div>
-
-    <!--<div class="row">
-        <div class="col-sm-6 rating-columns">
-            <h3>Geschwindigkeit</h3>
-
-            <br>
-        </div>
-        <div class="col-sm-6 rating-columns">
-            <h3>Inhalt</h3>
-
-            <p>(Anteil Folien vs. Übungen)</p>
-            <br>
-
+            <p>Please give us live feedback! Change your opinion any time. The lamps will reflect the average of all participants
         </div>
     </div>
 
 
-
-    <div class="row">
-        <div class="col-sm-6 rating-columns">
-
-            <button type="button" class="btn btn-lg btn-danger" ng-click="speed(-1)">
-                <span class="glyphicon glyphicon-minus"></span>
-            </button>
-            <button type="button" class="btn btn-lg btn-default" ng-click="speed(0)">OK</button>
-            <button type="button" class="btn btn-lg" ng-click="speed(1)"
-                    style="background-color: #8EFF00; color: #808080;">
-                <span class="glyphicon glyphicon-plus"></span>
-            </button>
-
-            <br>
-        </div>
-        <div class="col-sm-6 rating-columns">
-            <button type="button" class="btn btn-lg btn-info" ng-click="theory(-1)">
-                <span class="glyphicon glyphicon-plus"></span> Folien
-            </button>
-            <button type="button" class="btn btn-lg btn-default" ng-click="theory(0)">OK</button>
-            <button type="button" class="btn btn-lg btn-danger" ng-click="theory(1)">
-                <span class="glyphicon glyphicon-minus"></span> Folien
-            </button>
-        </div>
-    </div>
-
-    <hr>
-    <div class="row">
-        <div class="col-sm-6 rating-columns">
-            <h4>Farbspektrum für Geschwindigkeitslampe</h4>
-
-            <div class="range-container">
-                <div class="range-inner speed-range">
-                    <div class="range-inner colorrange-saturation-overlay">
-                        &lt;!&ndash;<span class="pull-left range-text">faster please</span>
-                        <span class="pull-right range-text">slower please</span>&ndash;&gt;
-                    </div>
-                </div>
-                <input type="range" class="range-slider" min="-1" max="1" ng-model="resonance.speed" id="speed-slider"
-                       ng-change="speed(resonance.speed)" title="Dies spiegelt deinen eigenen abgegebenen Wert dar" data-toggle="tooltip"/>
-            </div>
+    <button type="button" class="btn btn-info btn-lg btn-block" ng-click="submitSpeedRequest(-1)">Schneller</button>
+    <button type="button" class="btn btn-default btn-lg btn-block" ng-click="submitSpeedRequest(0)">OK</button>
+    <button type="button" class="btn btn-danger btn-lg btn-block" ng-click="submitSpeedRequest(1)">Langsamer</button>
 
 
-        </div>
-
-        <div class="col-sm-6 rating-columns">
-            <h4>Farbspektrum für Inhaltslampe</h4>
-
-            <div class="range-container">
-                <div class="range-inner theory-range">
-                    <div class="range-inner colorrange-saturation-overlay">
-                        &lt;!&ndash;<span class="pull-left range-text">move on already!</span>
-                        <span class="pull-right range-text">I need practice</span>&ndash;&gt;
-                    </div>
-                </div>
-                <input type="range" class="range-slider" min="-1" max="1" ng-model="resonance.theory" id="theory-slider"
-                       ng-change="theory(resonance.theory)" title="Dies spiegelt deinen eigenen abgegebenen Wert dar" data-toggle="tooltip"/>
-
-            </div>
-        </div>
-    </div>-->
-    <hr>
-    <div class="row fade-animation-double-container rating-columns">
 
 
-        <div class="col-sm-2 col-sm-offset-1">
-            <a href="" ng-click="callForCoffee()" id="coffeeHelp"
-               title="Klicke hier, wenn du ohne Kaffe keine Sekunde mehr aushälst" data-toggle="tooltip">
-                <img class="img-rounded" src="images/coffee2.png" alt="coffee">
 
-                <div id="coffee-overlay"></div>
-            </a>
-        </div>
-
-        <div class="col-sm-7 col-sm-offset-2 element-box" ng-if="!commentTimeout">
-            <form class="form" role="form">
-                <div class="form-group">
-                    <label for="commentField">Du kannst auch ein Kommentar abgeben. Dieses wird mit in unser Log
-                        geschrieben
-                        und anschließend ausgewertet:</label>
-                    <small>Die Folie brauchst du nicht dazu schreiben, diese wird automatisch gemapped.</small>
-                    <br>
-                    <input class="form-control form-control-feedback" ng-model="resonance.comment" id="commentField"
-                           placeholder="Gerade stört mich .... Mir gefiel gerade sehr gut ...."/>
-                </div>
-                <button type="submit" class="btn btn-success" ng-click="postComment(resonance.comment)">Kommentar
-                    abschicken
-                </button>
-
-            </form>
-
-
-        </div>
-        <div class="col-sm-7 col-sm-offset-2 text-center" ng-if="commentTimeout">
-            <div class="alert alert-success">success</div>
-        </div>
-
-
-    </div>
 
 </div>
-
-</div>
-
-
-<!--<form class="navbar-form navbar-default navbar-fixed-bottom" role="search" style="margin-bottom: 20px; padding: 10px;">
-    <div class="form-group" style="width: 100%;">
-        <label for="commentField-footer" class="sr-only">Du kannst auch ein Kommentar abgeben. Dieses wird mit in
-            unser Log geschrieben und anschließend ausgewertet:</label>
-        <input class="form-control form-control-feedback" ng-model="resonance.comment" id="commentField-footer"
-               placeholder="Gib gerne jederzeit ein Kommentar ab: Gerade stört mich .... Mir gefiel gerade sehr gut .... (Nur für Leiter sichtbar)" style="width: 100%;"/>
-    </div>
-    <button type="submit" ng-show="false" class="btn btn-success" ng-click="postComment(resonance.comment)">Kommentar
-        abschicken
-    </button>
-</form>-->

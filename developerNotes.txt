@@ -1,3 +1,0 @@
-tail -f ratingLog.log | bunyan   # to continuously get the logging on a console
-
-logging should be analyzed later on to see how and when people rated things

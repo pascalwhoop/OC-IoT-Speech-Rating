@@ -20,91 +20,39 @@
     <!-- endbuild -->
 
     <!--loading google API for Charts-->
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <!--<script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
         google.load("visualization", "1", {packages:["corechart"]});
-    </script>
+    </script>-->
 
 </head>
-<body ng-app="IoTWorkshopWebApp" ng-controller="pageContainerCtrl">
+<body ng-app="IoTWorkshopWebApp">
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
 <![endif]-->
 
 <!-- Add your site or application content here -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="pull-left" href="#">
+                <img class="media-object" src="styles/OC/opitz_logo_no_text.svg" height="40px;"
+                     style="margin: 5px;">
+            </a>
+            <div class="navbar-brand media" style="margin-top: 0px;">
+                <div class="media-body">
+                    <p class="media-heading">OC IoT Speech Rating</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
 <div class="container">
 
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-
-                <!--visible when collapsed, then our navigation is inserted here-->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-                <a class="pull-left" href="#">
-                    <img class="media-object" src="styles/OC/opitz_logo_no_text.svg" height="40px;"
-                         style="margin: 5px;">
-                </a>
-
-                <div class="navbar-brand media" style="margin-top: 0px;">
-                    <div class="media-body">
-                        <p class="media-heading">OC IoT Workshop</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a ng-class="{ active: isActive('/')}" ng-href="#/">Home</a></li>
-                    <li ng-class="{disabled: {{!participant.name}}}"><a ng-class="{ active: isActive('/rating')}"
-                                                                        ng-href="#/rating">Rating</a></li>
-                    <li><a ng-class="{ active: isActive('/slides')}" ng-href="#/slides">Folien</a></li>
-                    <li><a ng-class="{ active: isActive('/tasks')}" ng-href="#/tasks">Aufgaben</a></li>
-                    <li><a ng-class="{ active: isActive('/hints')}" ng-href="#/hints">Tipps</a></li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-    </nav>
-
-    <!--<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
-            <div class="collapse navbar-collapse navbar-right">
-                <ul class="nav navbar-nav ">
-                    <li><a ng-class="{ active: isActive('/')}" ng-href="#/">Home</a></li>
-                    <li ng-class="{disabled: {{!participant.name}}}"><a ng-class="{ active: isActive('/rating')}"
-                                                                        ng-href="#/rating">Rating</a></li>
-                    <li><a ng-class="{ active: isActive('/slides')}" ng-href="#/slides">Folien</a></li>
-                    <li><a ng-class="{ active: isActive('/tasks')}" ng-href="#/tasks">Aufgaben</a></li>
-                    <li><a ng-class="{ active: isActive('/hints')}" ng-href="#/hints">Tipps</a></li>
-                </ul>
-            </div>
-
-            <div class="nav navbar-left">
-                <a class="pull-left" href="#">
-                    <img class="media-object" src="styles/OC/opitz_logo_no_text.svg" height="40px;" style="margin: 5px;">
-                </a>
-
-                <div class="navbar-brand media" style="margin-top: 0px;">
-                    <div class="media-body">
-                        <p class="media-heading">OC IoT Workshop</p>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </nav>-->
 
 
     <div class="fade-animation-double-container ng-view-container">
@@ -116,10 +64,6 @@
 <div id="copyright-container">
     <p id="copyright"><a href="http://www.opitz-consulting.com" target="_blank">&copy; 2014 OPITZ CONSULTING Deutschland
         GmbH</a></p>
-    <a onclick="localStorage.clear(); location.reload();">
-        <div style="float: right; width: 150px; height: 19px; background-color: #E0E0E0"><p style="padding-left: 5px">
-            {{participant.name}} (Logout)</p></div>
-    </a>
 
 </div>
 
@@ -148,18 +92,10 @@
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
 
-<script src="scripts/controllers/main.js"></script>
-<script src="scripts/controllers/about.js"></script>
-<script src="scripts/controllers/pageContainer.js"></script>
-<script src="scripts/controllers/hint.js"></script>
+
 <script src="scripts/controllers/rating.js"></script>
-<script src="scripts/controllers/slide.js"></script>
-<script src="scripts/controllers/task.js"></script>
 <script src="scripts/controllers/logging.js"></script>
 
-
-<script src="scripts/services/localStorageService.js"></script>
-<script src="scripts/services/displayService.js"></script>
 <!-- endbuild -->
 </body>
 </html>
